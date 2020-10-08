@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public GameObject tower;
     public float jumpChargeSpeed = 5f;
     public float maxJumpPower = 10f;
+    public float angularSpeed = 5f;
     public LayerMask platformLayerMask;
     public GameObject character;
     private Collider playerCollider;
@@ -43,8 +44,7 @@ public class PlayerController : MonoBehaviour
     void Jump()
     {
         rigidbody.velocity += Vector3.up * jumpPower;
-        tower.GetComponent<Rigidbody>().angularVelocity = new Vector3(0, 10f * direction,0);
-        //AddTorque(Vector3.up * direction * 10f, ForceMode.VelocityChange);
+        tower.GetComponent<Rigidbody>().AddTorque(Vector3.up * direction * angularSpeed, ForceMode.VelocityChange);
     }
     void UpdateDirection()
     {
@@ -83,10 +83,7 @@ public class PlayerController : MonoBehaviour
                 jumpPower = 0;
             }
         }
-        else if (grounded && !isStatic()){
-            //tower.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-        }
-        Debug.Log("Jumping Power: " + grounded);
+        Debug.Log("Jumping Power: " + jumpPower);
     }
 
     bool isGrounded()
@@ -104,20 +101,13 @@ public class PlayerController : MonoBehaviour
         return isGrounded;
     }
 
-    // private void OnCollisionEnter(Collision other) {
-    //     if (other.gameObject.tag == "Platform"){
-    //         grounded = true;
-    //     }
-    // }
+    private void OnCollisionEnter(Collision other) {
+        if (other.gameObject.tag == "Platform"){
+             Debug.Log("Collison! Platform!");
+            tower.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+        }
+    }
 
-    // private void OnCollisionStay(Collision other) {
-        
-    // }
-    // private void OnCollisionExit(Collision other) {
-    //     if (other.gameObject.tag == "Platform"){
-    //         grounded = false;
-    //     }
-    //}
     bool isStatic(){
         return ApproximateToZero(rigidbody.velocity.x) && ApproximateToZero(rigidbody.velocity.y) && ApproximateToZero(rigidbody.velocity.z);
     }
