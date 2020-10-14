@@ -923,8 +923,8 @@ Transform:
   m_Children:
   - {fileID: 454618652}
   - {fileID: 809319790}
-  m_Father: {fileID: 1563309173}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &815180563
 Rigidbody:

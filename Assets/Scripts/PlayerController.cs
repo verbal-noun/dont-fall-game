@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public float jumpChargeSpeed = 5f;
     public float maxJumpPower = 10f;
     public float angularSpeed = 5f;
+    public float minJumpThreshold = 1f;
     public LayerMask platformLayerMask;
     public GameObject character;
     private Collider playerCollider;
@@ -79,7 +80,11 @@ public class PlayerController : MonoBehaviour
             }
             else if (Input.GetButtonUp("Jump"))
             {
-                Jump();
+                if (jumpPower > minJumpThreshold)
+                {
+                    Jump(); 
+                }
+
                 jumpPower = 0;
             }
         }
@@ -93,7 +98,7 @@ public class PlayerController : MonoBehaviour
         Collider pc = playerCollider;
         // bool isGrounded = Physics.Raycast(transform.position, Vector3.down, out hit, 1.0f + 0.1f);
         bool isGrounded = Physics.BoxCast(transform.position, pc.bounds.extents * 0.99f, Vector3.down, out hit, transform.rotation, jumpBuffer, platformLayerMask);
-        
+
         m_HitDetect = isGrounded;
         m_Hit = hit;
 
@@ -101,17 +106,21 @@ public class PlayerController : MonoBehaviour
         return isGrounded;
     }
 
-    private void OnCollisionEnter(Collision other) {
-        if (other.gameObject.tag == "Platform"){
-             Debug.Log("Collison! Platform!");
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.tag == "Platform")
+        {
+            Debug.Log("Collison! Platform!");
             tower.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
         }
     }
 
-    bool isStatic(){
+    bool isStatic()
+    {
         return ApproximateToZero(rigidbody.velocity.x) && ApproximateToZero(rigidbody.velocity.y) && ApproximateToZero(rigidbody.velocity.z);
     }
-    bool ApproximateToZero(float x){
+    bool ApproximateToZero(float x)
+    {
         return Mathf.Abs(x) < 0.1f;
     }
     void OnDrawGizmos()
