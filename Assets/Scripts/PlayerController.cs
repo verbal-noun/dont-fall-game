@@ -96,13 +96,13 @@ public class PlayerController : MonoBehaviour
 
         RaycastHit hit;
         Collider pc = playerCollider;
-        // bool isGrounded = Physics.Raycast(transform.position, Vector3.down, out hit, 1.0f + 0.1f);
-        bool isGrounded = Physics.BoxCast(transform.position, pc.bounds.extents * 0.99f, Vector3.down, out hit, transform.rotation, jumpBuffer, platformLayerMask);
+        //bool isGrounded = Physics.Raycast(transform.position, Vector3.down, out hit, 1.0f + 0.1f);
+        bool isGrounded = Physics.BoxCast(pc.bounds.center, pc.bounds.extents * 0.99f, Vector3.down, out hit, transform.rotation, jumpBuffer, platformLayerMask);
 
         m_HitDetect = isGrounded;
         m_Hit = hit;
 
-        //Debug.Log(isGrounded);
+        Debug.Log(isGrounded);
         return isGrounded;
     }
 
