@@ -82,7 +82,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (jumpPower > minJumpThreshold)
                 {
-                    Jump(); 
+                    Jump();
                 }
 
                 jumpPower = 0;
@@ -108,11 +108,12 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.tag == "Platform")
-        {
-            Debug.Log("Collison! Platform!");
-            tower.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-        }
+        Debug.Log("Collison! Platform!");
+        tower.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+        // if (other.gameObject.tag == "Platform")
+        // {
+
+        // }
     }
 
     bool isStatic()
