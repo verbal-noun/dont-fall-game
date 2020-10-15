@@ -97,7 +97,7 @@ public class PlayerController : MonoBehaviour
         bool isGrounded = Physics.BoxCast(pc.bounds.center, pc.bounds.extents * 0.99f, Vector3.down, out hit, transform.rotation, jumpBuffer, platformLayerMask);
 
 
-        Debug.Log(isGrounded);
+        //Debug.Log(isGrounded);
         return isGrounded;
     }
 
