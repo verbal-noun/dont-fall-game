@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
     {
 
         grounded = isGrounded();
-        if (isStatic() && grounded)
+        if (grounded)
         {
             if (Input.GetButtonDown("Jump"))
             {
@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour
                     jumpPower = maxJumpPower;
                 }
             }
-            else if (Input.GetButtonUp("Jump"))
+            else if (Input.GetButtonUp("Jump") || !Input.GetButton("Jump"))
             {
                 if (jumpPower > minJumpThreshold)
                 {
@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
             }
         }
         powerbar.SetPower(jumpPower);
-        Debug.Log("Jumping Power: " + jumpPower);
+        //Debug.Log("Jumping Power: " + jumpPower);
     }
 
     bool isGrounded()
@@ -97,7 +97,7 @@ public class PlayerController : MonoBehaviour
         bool isGrounded = Physics.BoxCast(pc.bounds.center, pc.bounds.extents * 0.99f, Vector3.down, out hit, transform.rotation, jumpBuffer, platformLayerMask);
 
 
-        //Debug.Log(isGrounded);
+        Debug.Log(isGrounded);
         return isGrounded;
     }
 
@@ -107,13 +107,13 @@ public class PlayerController : MonoBehaviour
         tower.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
     }
 
-    bool isStatic()
-    {
-        return ApproximateToZero(rigidbody.velocity.x) && ApproximateToZero(rigidbody.velocity.y) && ApproximateToZero(rigidbody.velocity.z);
-    }
-    bool ApproximateToZero(float x)
-    {
-        return Mathf.Abs(x) < 0.1f;
-    }
+    // bool isStatic()
+    // {
+    //     return ApproximateToZero(rigidbody.velocity.x) && ApproximateToZero(rigidbody.velocity.y) && ApproximateToZero(rigidbody.velocity.z);
+    // }
+    // bool ApproximateToZero(float x)
+    // {
+    //     return Mathf.Abs(x) < 0.1f;
+    // }
 
 }
