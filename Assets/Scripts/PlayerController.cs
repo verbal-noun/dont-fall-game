@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public float minJumpThreshold = 1f;
     public LayerMask platformLayerMask;
     public GameObject character;
+    public Powerbar powerbar;
     private Collider playerCollider;
     private Rigidbody rigidbody;
     private int direction = 1;
@@ -20,20 +21,16 @@ public class PlayerController : MonoBehaviour
     //Buffer Distance from ground to enable jump
     public float jumpBuffer = 0.1f;
     private Rigidbody rb;
-
-
-    //Debug
-    float m_MaxDistance;
-    float m_Speed;
-    bool m_HitDetect;
-    Collider m_Collider;
-    RaycastHit m_Hit;
-    bool grounded;
+    private bool grounded;
 
     void Start()
     {
         playerCollider = character.GetComponent<Collider>();
         rigidbody = character.GetComponent<Rigidbody>();
+        
+        powerbar.SetPower(0);
+        powerbar.SetMaxValue(maxJumpPower);
+        powerbar.SetLowHighColor(maxJumpPower/3, maxJumpPower * 2 /3 );
     }
 
     // Update is called once per frame
@@ -88,6 +85,7 @@ public class PlayerController : MonoBehaviour
                 jumpPower = 0;
             }
         }
+        powerbar.SetPower(jumpPower);
         Debug.Log("Jumping Power: " + jumpPower);
     }
 
@@ -96,24 +94,17 @@ public class PlayerController : MonoBehaviour
 
         RaycastHit hit;
         Collider pc = playerCollider;
-        //bool isGrounded = Physics.Raycast(transform.position, Vector3.down, out hit, 1.0f + 0.1f);
         bool isGrounded = Physics.BoxCast(pc.bounds.center, pc.bounds.extents * 0.99f, Vector3.down, out hit, transform.rotation, jumpBuffer, platformLayerMask);
 
-        m_HitDetect = isGrounded;
-        m_Hit = hit;
 
-        Debug.Log(isGrounded);
+        //Debug.Log(isGrounded);
         return isGrounded;
     }
 
     private void OnCollisionEnter(Collision other)
     {
-        Debug.Log("Collison! Platform!");
+        //Debug.Log("Collison! Platform!");
         tower.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-        // if (other.gameObject.tag == "Platform")
-        // {
-
-        // }
     }
 
     bool isStatic()
@@ -124,25 +115,5 @@ public class PlayerController : MonoBehaviour
     {
         return Mathf.Abs(x) < 0.1f;
     }
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        float m_MaxDistance = jumpBuffer;
-        //Check if there has been a hit yet
-        if (m_HitDetect)
-        {
-            //Draw a Ray forward from GameObject toward the hit
-            Gizmos.DrawRay(transform.position, Vector3.down * m_Hit.distance);
-            //Draw a cube that extends to where the hit exists
-            Gizmos.DrawWireCube(transform.position + Vector3.down * m_Hit.distance, transform.localScale);
-        }
-        //If there hasn't been a hit yet, draw the ray at the maximum distance
-        else
-        {
-            //Draw a Ray forward from GameObject toward the maximum distance
-            Gizmos.DrawRay(transform.position, Vector3.down * m_MaxDistance);
-            //Draw a cube at the maximum distance
-            Gizmos.DrawWireCube(transform.position + Vector3.down * m_MaxDistance, transform.localScale);
-        }
-    }
+
 }
