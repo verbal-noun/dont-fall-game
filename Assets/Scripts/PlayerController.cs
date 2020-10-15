@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private bool grounded;
 
-    void Start()
+    void Awake()
     {
         playerCollider = character.GetComponent<Collider>();
         rigidbody = character.GetComponent<Rigidbody>();
