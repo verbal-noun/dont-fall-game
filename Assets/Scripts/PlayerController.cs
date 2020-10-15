@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private bool grounded;
 
-    void Start()
+    void Awake()
     {
         playerCollider = character.GetComponent<Collider>();
         rigidbody = character.GetComponent<Rigidbody>();
@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
     {
 
         grounded = isGrounded();
-        if (isStatic() && grounded)
+        if (grounded)
         {
             if (Input.GetButtonDown("Jump"))
             {
@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
             }
         }
         powerbar.SetPower(jumpPower);
-        Debug.Log("Jumping Power: " + jumpPower);
+        //Debug.Log("Jumping Power: " + jumpPower);
     }
 
     bool isGrounded()
@@ -105,15 +105,6 @@ public class PlayerController : MonoBehaviour
     {
         //Debug.Log("Collison! Platform!");
         tower.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-    }
-
-    bool isStatic()
-    {
-        return ApproximateToZero(rigidbody.velocity.x) && ApproximateToZero(rigidbody.velocity.y) && ApproximateToZero(rigidbody.velocity.z);
-    }
-    bool ApproximateToZero(float x)
-    {
-        return Mathf.Abs(x) < 0.1f;
     }
 
 }
