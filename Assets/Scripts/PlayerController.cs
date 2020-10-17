@@ -23,6 +23,9 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private bool grounded;
 
+    [SerializeField]
+    private Animator animator;
+
     void Awake()
     {
         playerCollider = character.GetComponent<Collider>();
@@ -43,6 +46,8 @@ public class PlayerController : MonoBehaviour
     {
         rigidbody.velocity += Vector3.up * jumpPower;
         tower.GetComponent<Rigidbody>().AddTorque(Vector3.up * direction * angularSpeed, ForceMode.VelocityChange);
+
+        animator.SetBool("Grounded", false);
     }
     void UpdateDirection()
     {
@@ -61,11 +66,14 @@ public class PlayerController : MonoBehaviour
     {
 
         grounded = isGrounded();
+        animator.SetBool("Grounded", grounded);
+        animator.SetFloat("Vertical Speed", rigidbody.velocity.y);
         if (grounded)
         {
             if (Input.GetButtonDown("Jump"))
             {
                 jumpPower = 0;
+                
             }
             else if (Input.GetButton("Jump"))
             {
