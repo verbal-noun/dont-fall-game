@@ -94,26 +94,20 @@ public class PlayerController : MonoBehaviour
 
         RaycastHit hit;
         Collider pc = playerCollider;
-        bool isGrounded = Physics.BoxCast(pc.bounds.center, pc.bounds.extents * 0.99f, Vector3.down, out hit, transform.rotation, jumpBuffer, platformLayerMask);
 
+        bool ray1 = Physics.Raycast(new Vector3(pc.bounds.center.x, pc.bounds.center.y - pc.bounds.extents.y, pc.bounds.center.z), Vector3.down, pc.bounds.extents.y + jumpBuffer);
+        bool ray2 = Physics.Raycast(new Vector3(pc.bounds.center.x, pc.bounds.center.y, pc.bounds.center.z), Vector3.down, pc.bounds.extents.y + jumpBuffer);
+        bool ray3 = Physics.Raycast(new Vector3(pc.bounds.center.x, pc.bounds.center.y + pc.bounds.extents.y, pc.bounds.center.z), Vector3.down, pc.bounds.extents.y + jumpBuffer);
 
         //Debug.Log(isGrounded);
-        return isGrounded;
+        return ray1 || ray2 || ray3;
     }
 
     private void OnCollisionEnter(Collision other)
     {
         //Debug.Log("Collison! Platform!");
+        Vector3 av = tower.GetComponent<Rigidbody>().angularVelocity;
         tower.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
     }
-
-    // bool isStatic()
-    // {
-    //     return ApproximateToZero(rigidbody.velocity.x) && ApproximateToZero(rigidbody.velocity.y) && ApproximateToZero(rigidbody.velocity.z);
-    // }
-    // bool ApproximateToZero(float x)
-    // {
-    //     return Mathf.Abs(x) < 0.1f;
-    // }
 
 }
