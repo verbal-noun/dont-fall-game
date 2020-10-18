@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask platformLayerMask;
     public GameObject character;
     public Powerbar powerbar;
-    private Collider playerCollider;
+    private BoxCollider playerCollider;
     private Rigidbody rigidbody;
     private int direction = 1;
     //Jumping Power / Distance
@@ -23,10 +23,10 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private bool grounded;
 
-    void Awake()
+    void Start()
     {
-        playerCollider = character.GetComponent<Collider>();
-        rigidbody = character.GetComponent<Rigidbody>();
+        playerCollider = GetComponent<BoxCollider>();
+        rigidbody = GetComponent<Rigidbody>();
         
         powerbar.SetPower(0);
         powerbar.SetMaxValue(maxJumpPower);
@@ -95,14 +95,26 @@ public class PlayerController : MonoBehaviour
         RaycastHit hit;
         Collider pc = playerCollider;
 
-        bool ray1 = Physics.Raycast(new Vector3(pc.bounds.center.x, pc.bounds.center.y - pc.bounds.extents.y, pc.bounds.center.z), Vector3.down, pc.bounds.extents.y + jumpBuffer);
-        bool ray2 = Physics.Raycast(new Vector3(pc.bounds.center.x, pc.bounds.center.y, pc.bounds.center.z), Vector3.down, pc.bounds.extents.y + jumpBuffer);
-        bool ray3 = Physics.Raycast(new Vector3(pc.bounds.center.x, pc.bounds.center.y + pc.bounds.extents.y, pc.bounds.center.z), Vector3.down, pc.bounds.extents.y + jumpBuffer);
+        bool ray1 = Physics.Raycast(new Vector3(pc.bounds.center.x - pc.bounds.extents.x, pc.bounds.center.y , pc.bounds.center.z), Vector3.down,  out hit, pc.bounds.extents.y + jumpBuffer);
+        bool ray2 = Physics.Raycast(new Vector3(pc.bounds.center.x, pc.bounds.center.y, pc.bounds.center.z),  Vector3.down,  out hit, pc.bounds.extents.y + jumpBuffer);
+        bool ray3 = Physics.Raycast(new Vector3(pc.bounds.center.x + pc.bounds.extents.x , pc.bounds.center.y , pc.bounds.center.z), Vector3.down,  out hit, pc.bounds.extents.y + jumpBuffer);
 
         //Debug.Log(isGrounded);
         return ray1 || ray2 || ray3;
     }
 
+    // private void OnDrawGizmos() {
+    //     RaycastHit hit;
+    //     Gizmos.color = Color.red;
+    //     //bool ray1 = Physics.Raycast(new Vector3(pc.bounds.center.x - pc.bounds.extents.x, pc.bounds.center.y , pc.bounds.center.z), Vector3.down,  out hit, pc.bounds.extents.y + jumpBuffer);
+    //     Gizmos.DrawRay(new Vector3(pc.bounds.center.x - pc.bounds.extents.x, pc.bounds.center.y , pc.bounds.center.z), Vector3.down * (1+jumpBuffer));
+    //      Gizmos.DrawRay(new Vector3(pc.bounds.center.x, pc.bounds.center.y , pc.bounds.center.z), Vector3.down * (1+jumpBuffer));
+    //       Gizmos.DrawRay(new Vector3(pc.bounds.center.x + pc.bounds.extents.x, pc.bounds.center.y , pc.bounds.center.z), Vector3.down * (1+jumpBuffer));
+
+    //     //bool ray2 = Physics.Raycast(new Vector3(pc.bounds.center.x, pc.bounds.center.y, pc.bounds.center.z),  Vector3.down,  out hit, pc.bounds.extents.y + jumpBuffer);
+    //     //bool ray3 = Physics.Raycast(new Vector3(pc.bounds.center.x + pc.bounds.extents.x , pc.bounds.center.y , pc.bounds.center.z), Vector3.down,  out hit, pc.bounds.extents.y + jumpBuffer);
+
+    // }
     private void OnCollisionEnter(Collision other)
     {
         //Debug.Log("Collison! Platform!");
