@@ -9626,11 +9626,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SnowEnvironmentParticles
       objectReference: {fileID: 0}
-    - target: {fileID: 6424790835280813516, guid: b9adc0cf9825c614985bc2951f890a5c,
-        type: 3}
-      propertyPath: moveWithTransform
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6424790835280813518, guid: b9adc0cf9825c614985bc2951f890a5c,
         type: 3}
       propertyPath: m_LocalPosition.x
