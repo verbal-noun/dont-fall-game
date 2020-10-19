@@ -47,8 +47,9 @@ public class PlayerController : MonoBehaviour
     void Jump()
     {
         rigidbody.velocity += Vector3.up * jumpPower;
-        tower.GetComponent<Rigidbody>().AddTorque(Vector3.up * direction * angularSpeed, ForceMode.VelocityChange);
-
+        if (Mathf.Sign(Input.GetAxis("Horizontal")) == Mathf.Sign(direction)){
+            tower.GetComponent<Rigidbody>().AddTorque(Vector3.up * direction * angularSpeed, ForceMode.VelocityChange);
+        }
         animator.SetBool("Grounded", false);
     }
     void UpdateDirection()
@@ -80,7 +81,7 @@ public class PlayerController : MonoBehaviour
         grounded = isGrounded();
         animator.SetBool("Grounded", grounded);
         animator.SetFloat("Vertical Speed", rigidbody.velocity.y);
-        animator.SetFloat("Horizontal Speed", tower.GetComponent<Rigidbody>().angularVelocity.y);
+        animator.SetFloat("Horizontal Speed", Mathf.Abs(tower.GetComponent<Rigidbody>().angularVelocity.y));
 
         animator.SetBool("isCharging", Input.GetButton("Jump"));
 
