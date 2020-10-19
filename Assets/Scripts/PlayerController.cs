@@ -23,14 +23,19 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private bool grounded;
 
-    void Start()
+    public float turnSpeed = 10f;
+
+    [SerializeField]
+    private Animator animator;
+
+    void Awake()
     {
         playerCollider = GetComponent<BoxCollider>();
         rigidbody = GetComponent<Rigidbody>();
-        
+
         powerbar.SetPower(0);
         powerbar.SetMaxValue(maxJumpPower);
-        powerbar.SetLowHighColor(maxJumpPower/3, maxJumpPower * 2 /3 );
+        powerbar.SetLowHighColor(maxJumpPower / 3, maxJumpPower * 2 / 3);
     }
 
     // Update is called once per frame
@@ -43,17 +48,29 @@ public class PlayerController : MonoBehaviour
     {
         rigidbody.velocity += Vector3.up * jumpPower;
         tower.GetComponent<Rigidbody>().AddTorque(Vector3.up * direction * angularSpeed, ForceMode.VelocityChange);
+
+        animator.SetBool("Grounded", false);
     }
     void UpdateDirection()
     {
         float facing = Input.GetAxis("Horizontal");
         if (facing > 0)
         {
+
             direction = 1;
         }
         else if (facing < 0)
         {
+
             direction = -1;
+        }
+        if (direction == 1)
+        {
+            character.transform.rotation = Quaternion.Lerp(character.transform.rotation, Quaternion.LookRotation(Vector3.right), Time.deltaTime * turnSpeed);
+        }
+        else
+        {
+            character.transform.rotation = Quaternion.Lerp(character.transform.rotation, Quaternion.LookRotation(Vector3.left), Time.deltaTime * turnSpeed);
         }
     }
 
@@ -61,11 +78,19 @@ public class PlayerController : MonoBehaviour
     {
 
         grounded = isGrounded();
+        animator.SetBool("Grounded", grounded);
+        animator.SetFloat("Vertical Speed", rigidbody.velocity.y);
+        animator.SetFloat("Horizontal Speed", tower.GetComponent<Rigidbody>().angularVelocity.y);
+
+        animator.SetBool("isCharging", Input.GetButton("Jump"));
+
         if (grounded)
         {
             if (Input.GetButtonDown("Jump"))
             {
                 jumpPower = 0;
+                
+
             }
             else if (Input.GetButton("Jump"))
             {
@@ -95,9 +120,9 @@ public class PlayerController : MonoBehaviour
         RaycastHit hit;
         Collider pc = playerCollider;
 
-        bool ray1 = Physics.Raycast(new Vector3(pc.bounds.center.x - pc.bounds.extents.x, pc.bounds.center.y , pc.bounds.center.z), Vector3.down,  out hit, pc.bounds.extents.y + jumpBuffer);
-        bool ray2 = Physics.Raycast(new Vector3(pc.bounds.center.x, pc.bounds.center.y, pc.bounds.center.z),  Vector3.down,  out hit, pc.bounds.extents.y + jumpBuffer);
-        bool ray3 = Physics.Raycast(new Vector3(pc.bounds.center.x + pc.bounds.extents.x , pc.bounds.center.y , pc.bounds.center.z), Vector3.down,  out hit, pc.bounds.extents.y + jumpBuffer);
+        bool ray1 = Physics.Raycast(new Vector3(pc.bounds.center.x - pc.bounds.extents.x, pc.bounds.center.y, pc.bounds.center.z), Vector3.down, out hit, pc.bounds.extents.y + jumpBuffer);
+        bool ray2 = Physics.Raycast(new Vector3(pc.bounds.center.x, pc.bounds.center.y, pc.bounds.center.z), Vector3.down, out hit, pc.bounds.extents.y + jumpBuffer);
+        bool ray3 = Physics.Raycast(new Vector3(pc.bounds.center.x + pc.bounds.extents.x, pc.bounds.center.y, pc.bounds.center.z), Vector3.down, out hit, pc.bounds.extents.y + jumpBuffer);
 
         //Debug.Log(isGrounded);
         return ray1 || ray2 || ray3;
