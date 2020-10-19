@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 33246924460765460}
   - component: {fileID: 23086658190951876}
   - component: {fileID: 8407790418149940680}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Free_Sharp_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,8 +91,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.3036616, y: 0.42474407, z: 1.1334532}
-  m_Center: {x: -0.01276052, y: -0.056034267, z: 0.0032251477}
+  m_Size: {x: 2.235126, y: 0.42474407, z: 1.1334532}
+  m_Center: {x: -0.00055265427, y: -0.056034267, z: 0.0032251477}
 --- !u!1 &1286883039580100
 GameObject:
   m_ObjectHideFlags: 0
@@ -102,7 +102,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4808002372132574}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Free_Rock_Model_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,9 +133,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4294109675491792}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Flat_heavy
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
