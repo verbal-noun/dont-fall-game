@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4061216336262550}
   - component: {fileID: 33876561233237204}
   - component: {fileID: 23013811674092814}
+  - component: {fileID: 2686160640794181817}
   m_Layer: 0
   m_Name: Free_Snow_Model_3
   m_TagString: Untagged
@@ -80,6 +81,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &2686160640794181817
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1301431994231232}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.7807803, y: 1.7637941, z: 2.6599975}
+  m_Center: {x: -0.000000059604645, y: 0, z: 0}
 --- !u!1 &1623552298168874
 GameObject:
   m_ObjectHideFlags: 0
