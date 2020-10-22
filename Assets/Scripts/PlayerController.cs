@@ -25,10 +25,18 @@ public class PlayerController : MonoBehaviour
 
     public float turnSpeed = 10f;
 
+    public float walkSpeed = 3f;
+    public bool walkEnabled = true;
+
     private Animator animator;
 
     private AudioManager audio;
 
+    private bool btnDownJump = false;
+    private bool btnJump = false;
+    private bool btnUpJump = false;
+
+    private bool isOnGround = false;
     public GameObject GetTower(){
         return tower;
     }
@@ -46,7 +54,13 @@ public class PlayerController : MonoBehaviour
         powerbar.SetLowHighColor(maxJumpPower / 3, maxJumpPower * 2 / 3);
     }
 
-    // Update is called once per frame
+    void Update(){
+        btnDownJump = Input.GetButtonDown("Jump");
+        btnJump = Input.GetButton("Jump");
+        btnUpJump = Input.GetButtonUp("Jump");
+
+    }
+
     void Jump()
     {
         audio.PlayJump(jumpPower/maxJumpPower);
@@ -67,7 +81,6 @@ public class PlayerController : MonoBehaviour
         }
         else if (facing < 0)
         {
-
             direction = -1;
         }
         if (direction == 1)
@@ -84,8 +97,6 @@ public class PlayerController : MonoBehaviour
     {
         UpdateDirection();
 
-
-
         grounded = isGrounded();
         animator.SetBool("Grounded", grounded);
         animator.SetFloat("Vertical Speed", rigidbody.velocity.y);
@@ -93,23 +104,35 @@ public class PlayerController : MonoBehaviour
 
         animator.SetBool("isCharging", Input.GetButton("Jump"));
 
+        float h = Input.GetAxis("Horizontal");
+
         if (grounded)
-        {
-            if (Input.GetButtonDown("Jump"))
+        {   
+            if (isOnGround && walkEnabled){
+                if (h != 0 && Mathf.Sign(h) == direction){
+                    tower.GetComponent<Rigidbody>().AddTorque(Vector3.up * h * walkSpeed * 0.001f, ForceMode.VelocityChange);
+                }
+                else {
+                    tower.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+                }
+            }
+            if (btnDownJump)
             {
+                tower.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
                 jumpPower = 0;
                 audio.Play("JumpCharge");
 
             }
-            else if (Input.GetButton("Jump"))
+            else if (btnJump)
             {
+                tower.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
                 jumpPower += Time.deltaTime * jumpChargeSpeed;
                 if (jumpPower > maxJumpPower)
                 {
                     jumpPower = maxJumpPower;
                 }
             }
-            else if (Input.GetButtonUp("Jump") || !Input.GetButton("Jump"))
+            else if (btnUpJump || !btnJump)
             {
                 if (jumpPower > minJumpThreshold)
                 {
@@ -168,16 +191,19 @@ public class PlayerController : MonoBehaviour
     {
         //Debug.Log("Collison! Platform!");
         Vector3 av = tower.GetComponent<Rigidbody>().angularVelocity;
-        tower.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-    }
-
-    private void onCollisionStay(Collision other){
-        Debug.Log("Here");
-        if (Input.GetAxis("Horziontal") != 0f){
-            tower.GetComponent<Rigidbody>().AddTorque(Vector3.up * direction * 0.3f, ForceMode.VelocityChange);
+        if (isGrounded()){
+            isOnGround = true;
+            tower.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
         }
         else{
-            tower.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+            audio.PlayOneShot("Hit");
+        }
+        
+    }
+
+    private void OnCollisionExit(Collision other) {
+        if (isGrounded()){
+            isOnGround = false;
         }
     }
     public void PlayLand(){
