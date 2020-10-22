@@ -120,18 +120,33 @@ public class PlayerController : MonoBehaviour
         //Debug.Log("Jumping Power: " + jumpPower);
     }
 
+
+    //Ground check
     bool isGrounded()
     {
 
         RaycastHit hit;
         Collider pc = playerCollider;
-
+        
+        //Center
         bool ray1 = Physics.Raycast(new Vector3(pc.bounds.center.x - pc.bounds.extents.x, pc.bounds.center.y, pc.bounds.center.z), Vector3.down, out hit, pc.bounds.extents.y + jumpBuffer);
         bool ray2 = Physics.Raycast(new Vector3(pc.bounds.center.x, pc.bounds.center.y, pc.bounds.center.z), Vector3.down, out hit, pc.bounds.extents.y + jumpBuffer);
         bool ray3 = Physics.Raycast(new Vector3(pc.bounds.center.x + pc.bounds.extents.x, pc.bounds.center.y, pc.bounds.center.z), Vector3.down, out hit, pc.bounds.extents.y + jumpBuffer);
 
+        //Back
+        bool ray4 = Physics.Raycast(new Vector3(pc.bounds.center.x - pc.bounds.extents.x, pc.bounds.center.y, pc.bounds.center.z + pc.bounds.extents.z), Vector3.down, out hit, pc.bounds.extents.y + jumpBuffer);
+        bool ray5 = Physics.Raycast(new Vector3(pc.bounds.center.x, pc.bounds.center.y, pc.bounds.center.z + pc.bounds.extents.z), Vector3.down, out hit, pc.bounds.extents.y + jumpBuffer);
+        bool ray6 = Physics.Raycast(new Vector3(pc.bounds.center.x + pc.bounds.extents.x, pc.bounds.center.y, pc.bounds.center.z + pc.bounds.extents.z), Vector3.down, out hit, pc.bounds.extents.y + jumpBuffer);
+
+
+        //Front
+        bool ray7 = Physics.Raycast(new Vector3(pc.bounds.center.x - pc.bounds.extents.x, pc.bounds.center.y, pc.bounds.center.z - pc.bounds.extents.z), Vector3.down, out hit, pc.bounds.extents.y + jumpBuffer);
+        bool ray8 = Physics.Raycast(new Vector3(pc.bounds.center.x, pc.bounds.center.y, pc.bounds.center.z - pc.bounds.extents.z), Vector3.down, out hit, pc.bounds.extents.y + jumpBuffer);
+        bool ray9 = Physics.Raycast(new Vector3(pc.bounds.center.x + pc.bounds.extents.x, pc.bounds.center.y, pc.bounds.center.z - pc.bounds.extents.z), Vector3.down, out hit, pc.bounds.extents.y + jumpBuffer);
+
+
         //Debug.Log(isGrounded);
-        return ray1 || ray2 || ray3;
+        return ray1 || ray2 || ray3 || ray4 || ray5 || ray6 || ray7 || ray8 || ray9;
     }
 
     // private void OnDrawGizmos() {
