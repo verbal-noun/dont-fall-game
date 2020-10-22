@@ -11,8 +11,8 @@ public class PlayerController : MonoBehaviour
     public float angularSpeed = 5f;
     public float minJumpThreshold = 1f;
     public LayerMask platformLayerMask;
-    public GameObject character;
-    public Powerbar powerbar;
+    private GameObject character;
+    private Powerbar powerbar;
     private BoxCollider playerCollider;
     private Rigidbody rigidbody;
     private int direction = 1;
@@ -25,16 +25,21 @@ public class PlayerController : MonoBehaviour
 
     public float turnSpeed = 10f;
 
-    [SerializeField]
     private Animator animator;
 
     private AudioManager audio;
 
+    public GameObject GetTower(){
+        return tower;
+    }
     void Awake()
     {
+        animator = GetComponent<Animator>();
         playerCollider = GetComponent<BoxCollider>();
         rigidbody = GetComponent<Rigidbody>();
         audio = FindObjectOfType<AudioManager>();
+        powerbar = FindObjectOfType<Powerbar>();
+        character = transform.Find("Character").gameObject;
 
         powerbar.SetPower(0);
         powerbar.SetMaxValue(maxJumpPower);
@@ -42,11 +47,6 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        UpdateDirection();
-
-    }
     void Jump()
     {
         audio.PlayJump(jumpPower/maxJumpPower);
@@ -82,6 +82,9 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        UpdateDirection();
+
+
 
         grounded = isGrounded();
         animator.SetBool("Grounded", grounded);
@@ -128,25 +131,25 @@ public class PlayerController : MonoBehaviour
         RaycastHit hit;
         Collider pc = playerCollider;
         
-        //Center
-        bool ray1 = Physics.Raycast(new Vector3(pc.bounds.center.x - pc.bounds.extents.x, pc.bounds.center.y, pc.bounds.center.z), Vector3.down, out hit, pc.bounds.extents.y + jumpBuffer);
-        bool ray2 = Physics.Raycast(new Vector3(pc.bounds.center.x, pc.bounds.center.y, pc.bounds.center.z), Vector3.down, out hit, pc.bounds.extents.y + jumpBuffer);
-        bool ray3 = Physics.Raycast(new Vector3(pc.bounds.center.x + pc.bounds.extents.x, pc.bounds.center.y, pc.bounds.center.z), Vector3.down, out hit, pc.bounds.extents.y + jumpBuffer);
+        // //Center
+        // bool ray1 = Physics.Raycast(new Vector3(pc.bounds.center.x - pc.bounds.extents.x, pc.bounds.center.y, pc.bounds.center.z), Vector3.down, out hit, pc.bounds.extents.y + jumpBuffer);
+        // bool ray2 = Physics.Raycast(new Vector3(pc.bounds.center.x, pc.bounds.center.y, pc.bounds.center.z), Vector3.down, out hit, pc.bounds.extents.y + jumpBuffer);
+        // bool ray3 = Physics.Raycast(new Vector3(pc.bounds.center.x + pc.bounds.extents.x, pc.bounds.center.y, pc.bounds.center.z), Vector3.down, out hit, pc.bounds.extents.y + jumpBuffer);
 
-        //Back
-        bool ray4 = Physics.Raycast(new Vector3(pc.bounds.center.x - pc.bounds.extents.x, pc.bounds.center.y, pc.bounds.center.z + pc.bounds.extents.z), Vector3.down, out hit, pc.bounds.extents.y + jumpBuffer);
-        bool ray5 = Physics.Raycast(new Vector3(pc.bounds.center.x, pc.bounds.center.y, pc.bounds.center.z + pc.bounds.extents.z), Vector3.down, out hit, pc.bounds.extents.y + jumpBuffer);
-        bool ray6 = Physics.Raycast(new Vector3(pc.bounds.center.x + pc.bounds.extents.x, pc.bounds.center.y, pc.bounds.center.z + pc.bounds.extents.z), Vector3.down, out hit, pc.bounds.extents.y + jumpBuffer);
-
-
-        //Front
-        bool ray7 = Physics.Raycast(new Vector3(pc.bounds.center.x - pc.bounds.extents.x, pc.bounds.center.y, pc.bounds.center.z - pc.bounds.extents.z), Vector3.down, out hit, pc.bounds.extents.y + jumpBuffer);
-        bool ray8 = Physics.Raycast(new Vector3(pc.bounds.center.x, pc.bounds.center.y, pc.bounds.center.z - pc.bounds.extents.z), Vector3.down, out hit, pc.bounds.extents.y + jumpBuffer);
-        bool ray9 = Physics.Raycast(new Vector3(pc.bounds.center.x + pc.bounds.extents.x, pc.bounds.center.y, pc.bounds.center.z - pc.bounds.extents.z), Vector3.down, out hit, pc.bounds.extents.y + jumpBuffer);
+        // //Back
+        // bool ray4 = Physics.Raycast(new Vector3(pc.bounds.center.x - pc.bounds.extents.x, pc.bounds.center.y, pc.bounds.center.z + pc.bounds.extents.z), Vector3.down, out hit, pc.bounds.extents.y + jumpBuffer);
+        // bool ray5 = Physics.Raycast(new Vector3(pc.bounds.center.x, pc.bounds.center.y, pc.bounds.center.z + pc.bounds.extents.z), Vector3.down, out hit, pc.bounds.extents.y + jumpBuffer);
+        // bool ray6 = Physics.Raycast(new Vector3(pc.bounds.center.x + pc.bounds.extents.x, pc.bounds.center.y, pc.bounds.center.z + pc.bounds.extents.z), Vector3.down, out hit, pc.bounds.extents.y + jumpBuffer);
 
 
+        // //Front
+        // bool ray7 = Physics.Raycast(new Vector3(pc.bounds.center.x - pc.bounds.extents.x, pc.bounds.center.y, pc.bounds.center.z - pc.bounds.extents.z), Vector3.down, out hit, pc.bounds.extents.y + jumpBuffer);
+        // bool ray8 = Physics.Raycast(new Vector3(pc.bounds.center.x, pc.bounds.center.y, pc.bounds.center.z - pc.bounds.extents.z), Vector3.down, out hit, pc.bounds.extents.y + jumpBuffer);
+        // bool ray9 = Physics.Raycast(new Vector3(pc.bounds.center.x + pc.bounds.extents.x, pc.bounds.center.y, pc.bounds.center.z - pc.bounds.extents.z), Vector3.down, out hit, pc.bounds.extents.y + jumpBuffer);
+
+        bool isHit = Physics.CheckBox(new Vector3(pc.bounds.center.x, pc.bounds.center.y - jumpBuffer, pc.bounds.center.z), pc.bounds.extents, transform.rotation, platformLayerMask);
         //Debug.Log(isGrounded);
-        return ray1 || ray2 || ray3 || ray4 || ray5 || ray6 || ray7 || ray8 || ray9;
+        return isHit;
     }
 
     // private void OnDrawGizmos() {
@@ -168,6 +171,15 @@ public class PlayerController : MonoBehaviour
         tower.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
     }
 
+    private void onCollisionStay(Collision other){
+        Debug.Log("Here");
+        if (Input.GetAxis("Horziontal") != 0f){
+            tower.GetComponent<Rigidbody>().AddTorque(Vector3.up * direction * 0.3f, ForceMode.VelocityChange);
+        }
+        else{
+            tower.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+        }
+    }
     public void PlayLand(){
         audio.PlayOneShot("Land");
     }

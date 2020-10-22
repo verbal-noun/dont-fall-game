@@ -5,7 +5,6 @@ using UnityEngine;
 public class BounceHorizontal : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField]
     private GameObject tower;
     //Speed loss determines how much speed is lost when bouncing, a higher value will have a bouncier result
     public float speedLoss = 0.7f;
@@ -14,6 +13,7 @@ public class BounceHorizontal : MonoBehaviour
     private AudioManager audio;
     void Start()
     {
+        tower = FindObjectOfType<PlayerController>().GetTower();
         collider = GetComponent<Collider>();
         audio = FindObjectOfType<AudioManager>();
     }
@@ -22,7 +22,10 @@ public class BounceHorizontal : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         Vector3 av = tower.GetComponent<Rigidbody>().angularVelocity;
 
-        audio.PlayOneShot("Hit");
+        if (Mathf.Abs(av.y) > 0.1) {
+            audio.PlayOneShot("Hit");
+        }
+        
         tower.GetComponent<Rigidbody>().angularVelocity = new Vector3(0, av.y * -speedLoss, 0);
     }
 }
