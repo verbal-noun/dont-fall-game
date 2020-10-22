@@ -38,4 +38,37 @@ public class AudioManager : MonoBehaviour
         }
         s.source.Play();
     }
+
+    public void PlayJump(float power){
+        String name;
+        
+        Sound jc = Array.Find(sounds, sound => sound.name.Equals("JumpCharge"));
+        if (jc.source.isPlaying){
+            jc.source.Stop();
+        }
+        
+        if (power <= 0.75){
+            name = "JumpVoice1";
+        }
+        else{
+            name = "JumpVoice2";
+        }
+        Sound s = Array.Find(sounds, sound => sound.name.Equals(name));
+            if (s == null) return;
+        Sound s1 = Array.Find(sounds, sound => sound.name.Equals("Jump"));
+            if (s1 == null) return;
+        s.source.PlayOneShot(s.clip, s.volume);
+        s1.source.PlayOneShot(s1.clip, s1.volume);
+        
+    }
+
+    public void PlayOneShot(string name)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name.Equals(name));
+        if (s == null) {
+            Debug.Log("Sound " + name + "not found");
+            return;
+        }
+        s.source.PlayOneShot(s.clip, s.volume);
+    }
 }

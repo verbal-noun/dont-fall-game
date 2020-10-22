@@ -28,10 +28,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private Animator animator;
 
+    private AudioManager audio;
+
     void Awake()
     {
         playerCollider = GetComponent<BoxCollider>();
         rigidbody = GetComponent<Rigidbody>();
+        audio = FindObjectOfType<AudioManager>();
 
         powerbar.SetPower(0);
         powerbar.SetMaxValue(maxJumpPower);
@@ -46,6 +49,8 @@ public class PlayerController : MonoBehaviour
     }
     void Jump()
     {
+        audio.PlayJump(jumpPower/maxJumpPower);
+
         rigidbody.velocity += Vector3.up * jumpPower;
         if (Mathf.Sign(Input.GetAxis("Horizontal")) == Mathf.Sign(direction)){
             tower.GetComponent<Rigidbody>().AddTorque(Vector3.up * direction * angularSpeed, ForceMode.VelocityChange);
@@ -90,7 +95,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetButtonDown("Jump"))
             {
                 jumpPower = 0;
-                
+                audio.Play("JumpCharge");
 
             }
             else if (Input.GetButton("Jump"))
@@ -148,4 +153,7 @@ public class PlayerController : MonoBehaviour
         tower.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
     }
 
+    public void PlayLand(){
+        audio.PlayOneShot("Land");
+    }
 }
