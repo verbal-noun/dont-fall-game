@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using UnityEngine;
 
 //Followed tutorial from https://www.youtube.com/watch?v=6OT43pvUyfY
