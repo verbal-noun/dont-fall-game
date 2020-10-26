@@ -14,7 +14,6 @@ public class PlayerController : MonoBehaviour
     private GameObject character;
     private Powerbar powerbar;
     private BoxCollider playerCollider;
-    private Rigidbody rigidbody;
     private int direction = 1;
     //Jumping Power / Distance
     private float jumpPower = 0;
@@ -41,7 +40,7 @@ public class PlayerController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         playerCollider = GetComponent<BoxCollider>();
-        rigidbody = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
         audio = FindObjectOfType<AudioManager>();
         powerbar = FindObjectOfType<Powerbar>();
         character = transform.Find("Character").gameObject;
@@ -62,7 +61,7 @@ public class PlayerController : MonoBehaviour
     void Jump()
     {
         audio.PlayJump(jumpPower/maxJumpPower);
-        rigidbody.velocity += Vector3.up * jumpPower;
+        rb.velocity += Vector3.up * jumpPower;
         //Debug.Log(Input.GetAxis("Horizontal") + "____"  + direction);
         if (Input.GetAxis("Horizontal") == Mathf.Sign(direction)){
             trb.AddTorque(Vector3.up * direction * angularSpeed, ForceMode.VelocityChange);
@@ -96,7 +95,7 @@ public class PlayerController : MonoBehaviour
 
         grounded = isGrounded();
         animator.SetBool("Grounded", grounded);
-        animator.SetFloat("Vertical Speed", rigidbody.velocity.y);
+        animator.SetFloat("Vertical Speed", rb.velocity.y);
         animator.SetFloat("Horizontal Speed", Mathf.Abs(trb.angularVelocity.y));
         animator.SetBool("isCharging", Input.GetButton("Jump"));
 
@@ -106,9 +105,10 @@ public class PlayerController : MonoBehaviour
         if (grounded)
         {   
             if (isOnGround && walkEnabled){
-                if (!CheckWall() && ((h < 0f && Mathf.Round(trb.angularVelocity.y) <= 0f) || (h > 0f && Mathf.Round(trb.angularVelocity.y) >= 0f))){
+                if (!CheckWall() && ((h < 0f  && Mathf.Round(trb.angularVelocity.y) <= 0f) || 
+                (h > 0f  && Mathf.Round(trb.angularVelocity.y) >= 0f))){
                     //trb.AddTorque(Vector3.up * h * walkSpeed * 0.001f, ForceMode.VelocityChange);
-                    trb.angularVelocity = Mathf.Sign(h) * Vector3.up * walkSpeed * 0.1f;
+                    trb.angularVelocity = h * Vector3.up * walkSpeed * 0.1f;
                 }
                 else {
                     trb.angularVelocity = Vector3.zero;
