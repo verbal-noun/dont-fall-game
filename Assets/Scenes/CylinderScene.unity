@@ -10109,6 +10109,11 @@ PrefabInstance:
       propertyPath: EmissionModule.rateOverTime.scalar
       value: 220
       objectReference: {fileID: 0}
+    - target: {fileID: 6424790835280813516, guid: b9adc0cf9825c614985bc2951f890a5c,
+        type: 3}
+      propertyPath: VelocityModule.x.minScalar
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6424790835280813518, guid: b9adc0cf9825c614985bc2951f890a5c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10977,6 +10982,12 @@ PrefabInstance:
       propertyPath: tower
       value: 
       objectReference: {fileID: 1306269755}
+    - target: {fileID: 4534363675584945738, guid: 3cb31e579ea6c1946aee5fc4c7eb59f1,
+        type: 3}
+      propertyPath: jumpAndLand
+      value: 
+      objectReference: {fileID: 8048125268279216149, guid: 5735fecd46aa01441806b8fe8852884e,
+        type: 3}
     - target: {fileID: 4534363675584945743, guid: 3cb31e579ea6c1946aee5fc4c7eb59f1,
         type: 3}
       propertyPath: m_LocalPosition.x
