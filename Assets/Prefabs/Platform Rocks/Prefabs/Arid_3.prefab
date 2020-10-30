@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4462966950510562}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Arid_3
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4619825794520596}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Free_Rock_Model_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 33113075487574696}
   - component: {fileID: 23152970246317608}
   - component: {fileID: 6411304264213208704}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Free_Sharp_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4905321627644214}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Free_Rock_Model_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 33841375464125724}
   - component: {fileID: 23430366009696464}
   - component: {fileID: 7511007404908073189}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Free_Sharp_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,9 +133,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4597122169310472}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Free_Sharp_3
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
