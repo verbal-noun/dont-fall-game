@@ -7,6 +7,7 @@ public class SnowEnvPosition : MonoBehaviour
     // Update is called once per frame
     [SerializeField]
     private GameObject player;
+
     void Update()
     {
         Vector3 ptp = player.transform.position;

@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4481132, g: 1, b: 0.4481132, a: 1}
+  m_Color: {r: 0.51213825, g: 1, b: 0, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 5028840267838937427}
   - component: {fileID: 3913168420899254572}
   m_Layer: 5
-  m_Name: Healthbar1
+  m_Name: PowerBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -110,7 +110,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 125, y: 40}
+  m_AnchoredPosition: {x: 162.7, y: 62.7}
   m_SizeDelta: {x: 200, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5028840267838937427
@@ -157,9 +157,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 100
+  m_MaxValue: 25
   m_WholeNumbers: 0
-  m_Value: 100
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -175,14 +175,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68c1cd1f6863a6346ba4fe87b3a407dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  power: 100
+  powerbarDisplay: {fileID: 5028840267838937427}
+  power: 0
   minimumPower: 0
-  maximumPower: 100
-  lowPower: 33
-  highPower: 66
-  highPowerColor: {r: 0.35, g: 1, b: 0.35, a: 1}
-  mediumPowerColor: {r: 0.9450285, g: 1, b: 0.4481132, a: 1}
-  lowPowerColor: {r: 1, g: 0.259434, b: 0.259434, a: 1}
+  maximumPower: 25
+  lowPower: 8
+  highPower: 17
+  highPowerColor: {r: 1, g: 0, b: 0.06779289, a: 1}
+  mediumPowerColor: {r: 1, g: 0.99867064, b: 0, a: 1}
+  lowPowerColor: {r: 0.51213825, g: 1, b: 0, a: 1}
 --- !u!1 &4924608525807498961
 GameObject:
   m_ObjectHideFlags: 0
@@ -241,7 +242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.20031357, g: 0.22595079, b: 0.28676468, a: 1}
+  m_Color: {r: 0.5613208, g: 0.900222, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
