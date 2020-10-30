@@ -190,11 +190,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 049886ac1c9be8d4db643c92eee3880f, type: 2}
+      objectReference: {fileID: 2100000, guid: 72a5214f50eecdb40b5182a0e75d6ae2, type: 2}
     - target: {fileID: -927199367670048503, guid: 23d4332f11d6efc45a033098bcf54a44,
         type: 3}
       propertyPath: m_Name
-      value: Fluffy Platform Variant (1)
+      value: Fluffy Platform Variant (1) Variant
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: 23d4332f11d6efc45a033098bcf54a44,
         type: 3}
