@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         playerCollider = GetComponent<BoxCollider>();
         rb = GetComponent<Rigidbody>();
-        audio = FindObjectOfType<AudioManager>();
+        audio = AudioManager.instance;
         powerbar = FindObjectOfType<Powerbar>();
         character = transform.Find("Character").gameObject;
         trb = tower.GetComponent<Rigidbody>();

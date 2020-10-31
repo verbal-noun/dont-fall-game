@@ -44,14 +44,18 @@ Shader "Dypsloom/Outline"
 		Cull Back
 		CGPROGRAM
 		#pragma target 3.0
-		#pragma surface surf Unlit keepalpha addshadow fullforwardshadows exclude_path:deferred 
+		#pragma surface surf Unlit keepalpha addshadow fullforwardshadows exclude_path:deferred
 		struct Input
 		{
 			float2 uv_texcoord;
+			float3 viewDir;
 		};
 
 		uniform sampler2D _Texture;
 		uniform float4 _Texture_ST;
+		float4 _RimColor;
+      	float _RimPower;
+
 
 		inline half4 LightingUnlit( SurfaceOutput s, half3 lightDir, half atten )
 		{
@@ -62,6 +66,7 @@ Shader "Dypsloom/Outline"
 		{
 			float2 uv_Texture = i.uv_texcoord * _Texture_ST.xy + _Texture_ST.zw;
 			o.Emission = tex2D( _Texture, uv_Texture ).rgb;
+
 			o.Alpha = 1;
 		}
 
