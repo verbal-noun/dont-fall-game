@@ -43,6 +43,11 @@ public class AudioManager : MonoBehaviour
         String name;
         
         Sound jc = Array.Find(sounds, sound => sound.name.Equals("JumpCharge"));
+
+        if (jc == null){
+            Debug.Log("Cannot find jumpcharge");
+            return;
+        }
         if (jc.source.isPlaying){
             jc.source.Stop();
         }
@@ -65,7 +70,7 @@ public class AudioManager : MonoBehaviour
     public void PlayOneShot(string name)
     {
         Sound s = Array.Find(sounds, sound => sound.name.Equals(name));
-        if (s == null) {
+        if (s == null || s.source == null) {
             Debug.Log("Sound " + name + "not found");
             return;
         }
