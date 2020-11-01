@@ -7,7 +7,7 @@ public class playerExit : MonoBehaviour
 {
     void OnTriggerEnter(Collider other) {
          if (other.tag == "exit") {
-             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
          }
      }
 }
