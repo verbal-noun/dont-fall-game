@@ -23,7 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CombinedScene.unity
     guid: 8cd418d9769cf874980a7bb353d76c6a
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/CylinderScene.unity
     guid: 1cd759363b924b94c9ab227d8f64de5d
   - enabled: 0
