@@ -2115,7 +2115,7 @@ MonoBehaviour:
   character: {fileID: 767193396}
   skybox: {fileID: 2100000, guid: d9f78344b70954342855ce3c64dc8585, type: 2}
   maxHeight: 350
-  threshold1: 0.18
+  threshold1: 0.3
   threshold2: 0.6
   buffer: 10
 --- !u!4 &408791931
@@ -11641,8 +11641,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1832339969495251451}
-  m_LocalRotation: {x: -0, y: 0.85040635, z: -0, w: 0.5261264}
-  m_LocalPosition: {x: 0.13652608, y: 162.1, z: -0.5337316}
+  m_LocalRotation: {x: -0, y: 0.9915878, z: -0, w: 0.12943587}
+  m_LocalPosition: {x: -0.017695189, y: 162.1, z: -0.10080801}
   m_LocalScale: {x: 44.329685, y: 179.51389, z: 44.329685}
   m_Children:
   - {fileID: 1920154613426828545}
@@ -11652,7 +11652,7 @@ Transform:
   - {fileID: 2103392900}
   m_Father: {fileID: 0}
   m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 116.51201, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 165.126, z: 0}
 --- !u!64 &3454204009757585898
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11756,7 +11756,8 @@ PrefabInstance:
       propertyPath: dialog
       value: 
       objectReference: {fileID: 1721216279}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8366555106532007712, guid: 6e114499c035a3349abe69d9563ecdbd, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6e114499c035a3349abe69d9563ecdbd, type: 3}
 --- !u!23 &5716787252017152065
 MeshRenderer:
@@ -13367,7 +13368,7 @@ PrefabInstance:
     - target: {fileID: 4534363675584945743, guid: 3cb31e579ea6c1946aee5fc4c7eb59f1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 16.3
+      value: 87.7
       objectReference: {fileID: 0}
     - target: {fileID: 4534363675584945743, guid: 3cb31e579ea6c1946aee5fc4c7eb59f1,
         type: 3}
