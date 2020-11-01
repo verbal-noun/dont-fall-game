@@ -11,9 +11,6 @@ public class mainMenu : MonoBehaviour
         if (SceneManager.GetActiveScene().buildIndex == 0){
             AudioManager.instance.Stop("Theme");
         }
-        else if (SceneManager.GetActiveScene().buildIndex == 1){
-            AudioManager.instance.Play("Theme");
-        }
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
     }
