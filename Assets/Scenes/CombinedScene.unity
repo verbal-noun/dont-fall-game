@@ -11756,6 +11756,11 @@ PrefabInstance:
       propertyPath: dialog
       value: 
       objectReference: {fileID: 1721216279}
+    - target: {fileID: 7631226702301544754, guid: 6e114499c035a3349abe69d9563ecdbd,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8366555106532007712, guid: 6e114499c035a3349abe69d9563ecdbd, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6e114499c035a3349abe69d9563ecdbd, type: 3}
