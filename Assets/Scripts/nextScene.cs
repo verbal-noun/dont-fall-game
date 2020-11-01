@@ -5,10 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class nextScene : MonoBehaviour
 {
-    // Update is called once per frame
+    private float startTime;
+    void Start() {
+        startTime = Time.time;
+    }
+
     void Update()
     {
-        if (Input.GetKeyDown("space"))
+        if (Input.GetKeyDown("space") || Time.time - startTime > 34.5)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
