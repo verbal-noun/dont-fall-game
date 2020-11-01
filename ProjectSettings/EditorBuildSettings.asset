@@ -24,9 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/CombinedScene.unity
     guid: 8cd418d9769cf874980a7bb353d76c6a
   - enabled: 1
-    path: Assets/Scenes/CylinderScene.unity
-    guid: 1cd759363b924b94c9ab227d8f64de5d
+    path: Assets/Scenes/TempExitScene.unity
+    guid: 11574e569be8d2a479767db177f8dc60
   - enabled: 0
-    path: Assets/Scenes/Level-0.unity
+    path: Assets/Scenes/Level-1.unity
     guid: 694091108844d26408d7d63533115516
   m_configObjects: {}
