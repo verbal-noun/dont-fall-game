@@ -14,6 +14,7 @@ public class nextScene : MonoBehaviour
     {
         if (Input.GetKeyDown("space") || Time.time - startTime > 34.5)
         {
+            AudioManager.instance.Play("Theme");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
