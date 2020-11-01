@@ -12,7 +12,6 @@ public class MenuAnimation : MonoBehaviour
     public float minJumpThreshold = 1f;
     public LayerMask platformLayerMask;
     private GameObject character;
-    private Powerbar powerbar;
     private BoxCollider playerCollider;
     private int direction = 1;
     //Jumping Power / Distance
@@ -54,11 +53,6 @@ public class MenuAnimation : MonoBehaviour
 
         Debug.Log("Starting coroutine");
         StartCoroutine(JumpCoroutine());
-
-        powerbar.SetPower(0);
-        powerbar.SetMaxValue(maxJumpPower);
-        powerbar.SetLowHighColor(maxJumpPower / 3, maxJumpPower * 2 / 3);
-
         
     }
 
