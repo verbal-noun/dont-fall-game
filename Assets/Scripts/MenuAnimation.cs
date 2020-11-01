@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MenuController : MonoBehaviour
+public class MenuAnimation : MonoBehaviour
 {
     // 1 means its facing right, -1 facing left
     public GameObject tower;
