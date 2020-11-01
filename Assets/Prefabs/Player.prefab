@@ -563,13 +563,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4534363675415373834}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 2.5000002, z: 16.57}
+  m_LocalRotation: {x: 0, y: 0.9990483, z: 0.043619405, w: 0}
+  m_LocalPosition: {x: 0, y: 2.5000002, z: 21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4534363675584945743}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: -5, y: 180, z: 0}
 --- !u!20 &4534363675415373839
 Camera:
   m_ObjectHideFlags: 0
@@ -986,6 +986,7 @@ GameObject:
   - component: {fileID: 4534363675584945738}
   - component: {fileID: 4534363675584945739}
   - component: {fileID: 4534363675584945844}
+  - component: {fileID: 767193397}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -1058,7 +1059,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tower: {fileID: 0}
-  jumpChargeSpeed: 50
+  jumpChargeSpeed: 30
   maxJumpPower: 25
   angularSpeed: 0.3
   minJumpThreshold: 3
@@ -1097,8 +1098,20 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 2.3738077, z: 1}
-  m_Center: {x: -0, y: 1.1869038, z: -0}
+  m_Size: {x: 1, y: 2.0440166, z: 1}
+  m_Center: {x: -0, y: 1.0220083, z: -0}
+--- !u!114 &767193397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4534363675584945845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8b7ff620a50ede4393bd5f1dee3d48f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4534363675642630559
 GameObject:
   m_ObjectHideFlags: 0

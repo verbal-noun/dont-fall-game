@@ -3729,18 +3729,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 8657787658222281028}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &767193397
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 767193396}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8b7ff620a50ede4393bd5f1dee3d48f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &785122430
 GameObject:
   m_ObjectHideFlags: 0
@@ -13360,11 +13348,6 @@ PrefabInstance:
       propertyPath: tower
       value: 
       objectReference: {fileID: 1832339969495251451}
-    - target: {fileID: 4534363675584945738, guid: 3cb31e579ea6c1946aee5fc4c7eb59f1,
-        type: 3}
-      propertyPath: maxJumpPower
-      value: 25
-      objectReference: {fileID: 0}
     - target: {fileID: 4534363675584945743, guid: 3cb31e579ea6c1946aee5fc4c7eb59f1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13373,7 +13356,7 @@ PrefabInstance:
     - target: {fileID: 4534363675584945743, guid: 3cb31e579ea6c1946aee5fc4c7eb59f1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 87.7
+      value: 20.2
       objectReference: {fileID: 0}
     - target: {fileID: 4534363675584945743, guid: 3cb31e579ea6c1946aee5fc4c7eb59f1,
         type: 3}
@@ -13419,26 +13402,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4534363675584945844, guid: 3cb31e579ea6c1946aee5fc4c7eb59f1,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 2.0440166
-      objectReference: {fileID: 0}
-    - target: {fileID: 4534363675584945844, guid: 3cb31e579ea6c1946aee5fc4c7eb59f1,
-        type: 3}
-      propertyPath: m_Center.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4534363675584945844, guid: 3cb31e579ea6c1946aee5fc4c7eb59f1,
-        type: 3}
-      propertyPath: m_Center.y
-      value: 1.0220083
-      objectReference: {fileID: 0}
-    - target: {fileID: 4534363675584945844, guid: 3cb31e579ea6c1946aee5fc4c7eb59f1,
-        type: 3}
-      propertyPath: m_Center.z
-      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4534363675584945845, guid: 3cb31e579ea6c1946aee5fc4c7eb59f1,
         type: 3}
