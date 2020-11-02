@@ -8,11 +8,11 @@
         _Height ("Height", 2D) = "white" {}
         _Occlusion ("Occlusion", 2D) = "white" {}
         //Add Emission to simulate snow reflection
-        [HDR] _EmissionColor("Color", Color) = (0,0,0)
+        [HDR] _EmissionColor("Emission Color", Color) = (0,0,0)
     }
     SubShader
     {
-        // Phong Shader
+        // Phong Shader from the tutorial without Speculation
         Pass {
             // For our sun light source 
             Tags { "LightMode" = "ForwardBase"}
