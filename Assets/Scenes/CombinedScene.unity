@@ -3736,7 +3736,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 767193396}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 15a5d874b0e0e3a4a84ef1379f7e1dd4, type: 3}
   m_Name: 
@@ -3744,7 +3744,7 @@ MonoBehaviour:
   specialKey: 0
   upArrow: 0
   downArrow: 0
-  character: {fileID: 0}
+  mountain: {fileID: 1832339969495251451}
 --- !u!1 &785122430
 GameObject:
   m_ObjectHideFlags: 0
