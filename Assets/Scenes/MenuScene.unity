@@ -202,7 +202,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 126359452}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1800951581}
+        m_MethodName: QuitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &126359452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1806,16 +1817,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AudioManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 2772408572582264520, guid: fac4170981d8bab4b9b317ecc660a1d3,
-        type: 3}
-      propertyPath: sounds.Array.data[0].volume
-      value: 0.23
-      objectReference: {fileID: 0}
-    - target: {fileID: 2772408572582264520, guid: fac4170981d8bab4b9b317ecc660a1d3,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2772408572582264521, guid: fac4170981d8bab4b9b317ecc660a1d3,
         type: 3}

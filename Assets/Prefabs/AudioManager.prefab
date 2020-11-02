@@ -46,43 +46,43 @@ MonoBehaviour:
   sounds:
   - name: Theme
     clip: {fileID: 8300000, guid: 2f6a5e07cf1a3a245806609018a69bfc, type: 3}
-    volume: 0.4
+    volume: 0.04
     pitch: 1
     loop: 1
     source: {fileID: 0}
   - name: JumpVoice1
     clip: {fileID: 8300000, guid: 829af73d4c47cca4fb297b8cf5c40677, type: 3}
-    volume: 0.7
+    volume: 0.5
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: JumpVoice2
     clip: {fileID: 8300000, guid: fad19629dbdcbb645b4484498f2d2169, type: 3}
-    volume: 0.7
+    volume: 0.5
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: JumpCharge
     clip: {fileID: 8300000, guid: 5902062949573f84694aeb81570f5f28, type: 3}
-    volume: 0.7
+    volume: 0.5
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Jump
     clip: {fileID: 8300000, guid: 1a4da5d853be6cd418f15cb54ee269e2, type: 3}
-    volume: 1
+    volume: 0.6
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Hit
     clip: {fileID: 8300000, guid: 2c0d740b18354904b8ae4ac034812bfb, type: 3}
-    volume: 0.7
+    volume: 0.5
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Land
     clip: {fileID: 8300000, guid: dd4c725dcf498b44dbdcfd6d858cad6c, type: 3}
-    volume: 0.5
+    volume: 0.3
     pitch: 1
     loop: 0
     source: {fileID: 0}
