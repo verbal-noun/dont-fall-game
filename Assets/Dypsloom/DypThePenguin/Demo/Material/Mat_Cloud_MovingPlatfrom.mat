@@ -124,7 +124,7 @@ Material:
     - __dirty: 0
     m_Colors:
     - _Albedo: {r: 0.3018868, g: 0.3018868, b: 0.3018868, a: 0}
-    - _BlendColor: {r: 0.09159712, g: 0.019579919, b: 0.8301887, a: 0}
+    - _BlendColor: {r: 0.018912422, g: 0.66880614, b: 0.8018868, a: 0}
     - _BlendColor1: {r: 1, g: 0, b: 0, a: 0}
     - _BlendColor2: {r: 0.34715375, g: 0.8679245, b: 0.20060521, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
@@ -142,6 +142,6 @@ Material:
     - _SummedWeight: {r: 1, g: 0.5, b: 0, a: 0}
     - _TimeOffset: {r: 0.3, g: 0.3, b: 0, a: 0}
     - _TimeOffset1: {r: 0.46, g: 0.43, b: 0, a: 0}
-    - _TopColor: {r: 0.5198992, g: 0.09620863, b: 0.8867924, a: 0}
+    - _TopColor: {r: 0.9433962, g: 0.9433962, b: 0.9433962, a: 0}
     - _Vector0: {r: 0.11, g: 0.56, b: 0.33, a: 0}
     - _Vector1: {r: 0.65, g: 0.35, b: 0, a: 0}

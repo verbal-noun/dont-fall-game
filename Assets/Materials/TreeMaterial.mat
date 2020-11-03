@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SnowMaterial
+  m_Name: TreeMaterial
   m_Shader: {fileID: 4800000, guid: 8bb2f8517c2f1e646a450f069453c23d, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -90,5 +90,5 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.8820755, g: 0.9560463, b: 1, a: 1}
-    - _EmissionColor: {r: 0.44705883, g: 0.59607846, b: 0.7372549, a: 1}
+    - _Color: {r: 0.7607843, g: 0.7607843, b: 0.7607843, a: 1}
+    - _EmissionColor: {r: 0.62144, g: 0.8962264, b: 0.76091015, a: 1}
