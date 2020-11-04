@@ -9,7 +9,7 @@ public class SignScript : MonoBehaviour
     public Dialog dialog;
     private bool inbox = false;
     public string[] sentences;
-    public GameObject visual;
+    private GameObject visual;
     void Start()
     {
         collider = GetComponent<Collider>();
