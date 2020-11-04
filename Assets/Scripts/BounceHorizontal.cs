@@ -19,13 +19,19 @@ public class BounceHorizontal : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void OnTriggerEnter(Collider other) {
-        Vector3 av = tower.GetComponent<Rigidbody>().angularVelocity;
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag != "Sign")
+        {
+            Vector3 av = tower.GetComponent<Rigidbody>().angularVelocity;
 
-        if (Mathf.Abs(av.y) > 0.1) {
-            audio.PlayOneShot("Hit");
+            if (Mathf.Abs(av.y) > 0.1)
+            {
+                audio.PlayOneShot("Hit");
+            }
+
+            tower.GetComponent<Rigidbody>().angularVelocity = new Vector3(0, av.y * -speedLoss, 0);
         }
-        
-        tower.GetComponent<Rigidbody>().angularVelocity = new Vector3(0, av.y * -speedLoss, 0);
     }
 }
+
