@@ -21,7 +21,7 @@ public class BounceHorizontal : MonoBehaviour
     // Update is called once per frame
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Platform")
+        if (other.tag != "Sign")
         {
             Vector3 av = tower.GetComponent<Rigidbody>().angularVelocity;
 
