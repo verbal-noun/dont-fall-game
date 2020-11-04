@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Platform
   - exit
+  - Sign
   layers:
   - Default
   - TransparentFX

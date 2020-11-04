@@ -35,6 +35,8 @@ public class PlayerController : MonoBehaviour
     private bool btnJump = false;
     private bool btnUpJump = false;
     private bool isOnGround = false;
+
+    private int jumpPowerDirection = 1;
     private Rigidbody trb;
     public GameObject GetTower(){
         return tower;
@@ -126,6 +128,7 @@ public class PlayerController : MonoBehaviour
             }
             if (btnDownJump)
             {
+                jumpPowerDirection = 1;
                 trb.angularVelocity = Vector3.zero;
                 jumpPower = 0;
                 audio.Play("JumpCharge");
@@ -133,11 +136,12 @@ public class PlayerController : MonoBehaviour
             else if (btnJump)
             {
                 trb.angularVelocity = Vector3.zero;
-                jumpPower += Time.deltaTime * jumpChargeSpeed;
-                if (jumpPower > maxJumpPower)
+                
+                if (jumpPower > maxJumpPower || jumpPower < 0)
                 {
-                    jumpPower = maxJumpPower;
+                    jumpPowerDirection *= -1;
                 }
+                jumpPower += Time.deltaTime * jumpChargeSpeed * jumpPowerDirection;
             }
             else if (btnUpJump || !btnJump)
             {
