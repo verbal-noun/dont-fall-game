@@ -1066,7 +1066,7 @@ MonoBehaviour:
   platformLayerMask:
     serializedVersion: 2
     m_Bits: 2048
-  jumpBuffer: 0.3
+  jumpBuffer: 0.1
   turnSpeed: 7.5
   walkSpeed: 1.5
   jumpAndLand: {fileID: 8048125268279216149, guid: 5735fecd46aa01441806b8fe8852884e,
