@@ -9,12 +9,17 @@ public class SignScript : MonoBehaviour
     public Dialog dialog;
     private bool inbox = false;
     public string[] sentences;
+    public GameObject visual;
     void Start()
     {
         collider = GetComponent<Collider>();
+        visual = transform.Find("visual").gameObject;
+
     }
 
     void Update(){
+
+        visual.SetActive(inbox);
         if (active && Input.GetKeyDown(KeyCode.E)){
             dialog.SetSentences(sentences);
             dialog.StartDialog();
