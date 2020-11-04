@@ -47,14 +47,13 @@ public class PlayerController : MonoBehaviour
         playerCollider = GetComponent<BoxCollider>();
         rb = GetComponent<Rigidbody>();
         audio = AudioManager.instance;
-        powerbar = FindObjectOfType<Powerbar>();
+        powerbar = GameObject.Find("PowerBar").GetComponent<Powerbar>();
         character = transform.Find("Character").gameObject;
         trb = tower.GetComponent<Rigidbody>();
 
 
         powerbar.SetPower(0);
         powerbar.SetMaxValue(maxJumpPower);
-        powerbar.SetLowHighColor(maxJumpPower / 3, maxJumpPower * 2 / 3);
     }
 
     void Update(){
