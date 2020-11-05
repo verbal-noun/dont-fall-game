@@ -66,7 +66,6 @@ public class PlayerController : MonoBehaviour
     {
         audio.PlayJump(jumpPower/maxJumpPower);
         rb.velocity += Vector3.up * jumpPower;
-        //Debug.Log(Input.GetAxis("Horizontal") + "____"  + direction);
         if (Input.GetAxis("Horizontal") != 0f && Mathf.Sign(Input.GetAxis("Horizontal")) == Mathf.Sign(direction)){
             trb.AddTorque(Vector3.up * direction * angularSpeed, ForceMode.VelocityChange);
         }

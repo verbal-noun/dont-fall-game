@@ -2004,7 +2004,16 @@ PrefabInstance:
       propertyPath: sentences.Array.data[2]
       value: You can cancel jump by letting the jump power fall back.
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 544965008229141511, guid: 6e114499c035a3349abe69d9563ecdbd, type: 3}
+    - {fileID: 6190155965591039301, guid: 6e114499c035a3349abe69d9563ecdbd, type: 3}
+    - {fileID: 2510831104057201473, guid: 6e114499c035a3349abe69d9563ecdbd, type: 3}
+    - {fileID: 3767152704453718890, guid: 6e114499c035a3349abe69d9563ecdbd, type: 3}
+    - {fileID: 2922706931140346630, guid: 6e114499c035a3349abe69d9563ecdbd, type: 3}
+    - {fileID: 380037462082369400, guid: 6e114499c035a3349abe69d9563ecdbd, type: 3}
+    - {fileID: 1708217630873823461, guid: 6e114499c035a3349abe69d9563ecdbd, type: 3}
+    - {fileID: 7477376510081105160, guid: 6e114499c035a3349abe69d9563ecdbd, type: 3}
+    - {fileID: 5847127889413264751, guid: 6e114499c035a3349abe69d9563ecdbd, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6e114499c035a3349abe69d9563ecdbd, type: 3}
 --- !u!1 &431441114
 GameObject:
@@ -2453,7 +2462,8 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -0.030961037
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8068220812719088650, guid: 196b55b336ec52841bbcab2f8464239b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 196b55b336ec52841bbcab2f8464239b, type: 3}
 --- !u!4 &515230292 stripped
 Transform:
@@ -10708,7 +10718,14 @@ PrefabInstance:
       propertyPath: dialog
       value: 
       objectReference: {fileID: 1721216279}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1303172658691075603, guid: 4c1edf839d249aa4b9067188765dc10f, type: 3}
+    - {fileID: 3977414822095166569, guid: 4c1edf839d249aa4b9067188765dc10f, type: 3}
+    - {fileID: 2089031598478818811, guid: 4c1edf839d249aa4b9067188765dc10f, type: 3}
+    - {fileID: 9172004473424594474, guid: 4c1edf839d249aa4b9067188765dc10f, type: 3}
+    - {fileID: 7387801437733226437, guid: 4c1edf839d249aa4b9067188765dc10f, type: 3}
+    - {fileID: 5209391079724677990, guid: 4c1edf839d249aa4b9067188765dc10f, type: 3}
+    - {fileID: 5684910667255594932, guid: 4c1edf839d249aa4b9067188765dc10f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4c1edf839d249aa4b9067188765dc10f, type: 3}
 --- !u!4 &2000125015 stripped
 Transform:

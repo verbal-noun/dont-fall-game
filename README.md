@@ -61,6 +61,17 @@ The tower is set to a very high mass to prevent objects from rotating the tower.
 
 When the player jumps, a Y velocity is added onto the Player's rigidbody component, which launches the player into the air. To prevent the player from jumping mid air, we need to have a ground check. This is done by using the Physics.BoxCast() function which checks for the ground underneath the player.
 
+```c#
+void Jump(){
+  ...
+  rb.velocity += Vector3.up * jumpPower;
+  if (Input.GetAxis("Horizontal") != 0f && Mathf.Sign(Input.GetAxis("Horizontal")) == Mathf.Sign(direction)){
+    trb.AddTorque(Vector3.up * direction * angularSpeed, ForceMode.VelocityChange);
+  }
+  ...
+}
+```
+
 ### Walking
 
 When the ground check is active, the player is allow to walk either left or right. A fixed angular speed for the tower is set once a directional button is pressed. Else, the angular speed is set to 0 to stop the player from sliding.
@@ -72,9 +83,6 @@ A typical jump follows a normal parabola which is accurate in real life but feel
 ### Bouncing
 
 The player also has a BounceHorizontal object which makes the players bounce off walls throughtout the game. The usual method of applying a Physics Material does not work in this case as due to the rotational physics we have for the tower. Thus, BounceHorizontal has a Trigger Box Collider, which reverses the tower's angular velocity if the collider comes into contact with a platform.
-
-
-## Graphics pipeline implementation
 
 
 ## Camera motion
@@ -91,6 +99,28 @@ The majority of the terrain in the game uses the snow shader. The shader is a cu
 
 The Phong Shader consists of three parts: Ambient, Diffuse and Specular. As a snow does reflect some light, we set the speculation constant to 1, and the shininess constant to 1, which gave us the effect we wanted.
 
+
+```c#
+fixed4 frag(vertOut i) : COLOR {
+  ...
+  // Ambient component 
+  float3 ambientLighting = UNITY_LIGHTMODEL_AMBIENT.rgb * _Colour.rgb;
+  // Diffuse component 
+  float3 diffuseReflection = _LightColor0.rgb * _Colour.rgb * 
+  max(0.0, dot(normalDirection, lightDirection)) * attenuation;  
+
+  float3 H = normalize(viewDirection + lightDirection);
+  // Speculation component
+  float specConstant = 1f;
+  float3 spec = attenuation * _LightColor0  * specConstant * pow(saturate(dot(normalDirection, H)), _SpecN); 
+
+  // Calculating colour based on the three components 
+  float3 color = (ambientLighting + diffuseReflection + spec) * tex2D(_Tex, i.uv);  
+  ...
+}
+
+```
+
 The second part is a surface shader that applies multiple maps onto the objects. 
 
 The maps are:
@@ -106,6 +136,38 @@ The second part also adds an emission color to the snow to create a cartoony blu
 A custom skybox shader was created for the skybox transitions during the game. The shader was written to accept 3 Skybox cube textures, with a blend attribute which controls the blend between the skyboxes. A C# script is then used to modify the value of the blend depending on how far the player has progressed. 
 
 The blend is a range from 0 - 2. A blend value between 0 and 1 will blend skybox0 and skybox1 together, whereas a value between 1 and will blend skybox1 and skybox2 together. If the blend values are whole numbers (0,1,2), they correspond to the skyboxes without any blend effects.
+
+
+## Graphics pipeline
+
+For the SnowShader, since we used a multipass shader, after applying Phong shading at the pixel shader stage, we repeat the pixel shader stage again for the surface shader effects.
+
+Otherwise, the graphics pipeline was not modified in anyway.
+
+
+```c#
+fixed4 frag (v2f i) : SV_Target
+{
+    half4 tex1 = texCUBE (_Tex1, i.texcoord);
+    half4 tex2 = texCUBE (_Tex2, i.texcoord);
+    half4 tex3 = texCUBE (_Tex3, i.texcoord);
+    half3 c1 = DecodeHDR (tex1, _Tex1_HDR);
+    half3 c2 = DecodeHDR (tex2, _Tex2_HDR);
+    half3 c3 = DecodeHDR (tex3, _Tex3_HDR);
+
+    half3 c = half3(0, 0, 0);
+    if (_Blend >= 0 && _Blend < 1) {
+        c = lerp(c1, c2, smoothstep(0,1,_Blend));
+    }
+    else {
+        c = lerp(c2, c3, smoothstep(0,1,_Blend - 1));
+    }
+
+    c = c * _Tint.rgb * unity_ColorSpaceDouble.rgb;
+    c *= _Exposure;
+    return half4(c, 1);
+}
+```
 
 ## Particle Systems
 
@@ -170,6 +232,14 @@ Fourth, we added more decorations, such as the crystals and signs. The color is 
 Fifth, the control button has been improved. ........// how did we improve this? 
 
 ## Reference list
+
+- SFX: https://zappsplatt.com
+- Penguin: https://assetstore.unity.com/packages/templates/tutorials/dyp-the-penguin-174519
+- Main Theme: https://www.youtube.com/watch?v=3o8008aFFUI
+- Audio Manager: https://youtu.be/6OT43pvUyfY
+- Bars: https://assetstore.unity.com/packages/tools/gui/simple-healthbars-132547
+
+
 
 -----------------------------------------------------------------------------------------------------------------------------------------------
 

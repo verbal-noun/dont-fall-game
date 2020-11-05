@@ -16,7 +16,7 @@ public class ProgressBar : MonoBehaviour
     private float position = 0;
     void Start()
     {
-        towerTop = GameObject.Find("towerTop").transform.position.y;
+        towerTop = GameObject.Find("Tower Top").transform.position.y;
         towerBottom = 0f;
 
         powerbar = GetComponent<Powerbar>();
