@@ -91,7 +91,8 @@
 
                 float3 H = normalize(viewDirection + lightDirection);
 
-                float3 spec = attenuation * _LightColor0  * pow(saturate(dot(normalDirection, H)), _SpecN); 
+                float specConstant = 1f;
+                float3 spec = attenuation * _LightColor0  * specConstant * pow(saturate(dot(normalDirection, H)), _SpecN); 
 
                 // Calculating colour based on the three components 
                 float3 color = (ambientLighting + diffuseReflection + spec) * tex2D(_Tex, i.uv);

@@ -26,32 +26,122 @@
 
 This is project 2 of subject COMP30019 in the University of Melbourne. In this project, the storyline and the main purpose is a penguin trying to climb to the top of the mountain and fly like the birds. The game is purposed to give a relaxing and challenging feeling to the players. 
 
+The game is inspired by titles like Jump King and Getting Over It. The game intends to frustrate players by having simple mechanics yet hard level design, where the punishment of making a mistake is extremely severe, causing the player to lose progress and forces the player to redo parts of the level they have previously completed.
+
 The overall design is a snow scene with a cylinder in the middle representing the mountain, and there are many stones with different shapes on it for the penguin to step on. The difficulty of the game increases with the height, that the higher the penguin gets, the narrower and smaller the stones will be, and more techniques will be required to jump higher. The background music is cheerful and relaxing with sound effects when the penguin jumps and falls. 
 
 The penguin will implement two mechanisms: jumping and walking. For jumping, the space key should be pressed and held, and the left and right keys should control the direction. The higher the player get, the narrower the stones will be, so that the level of difficulties increases. The player can also walk left or right by pressing left and right keys, to adjust the jumping position. 
 
 There is a power bar indicating the power, so as the height of jumping on the left bottom corner. The longer the power bar is, the higher the penguin will jump. Also, there is a position bar indicating the height the penguin has climbed, and it changes according to the penguin's position in relation to the cylinder. 
 
-A cheating mode is implemented for the convenience of testing, which the player can press and hold the left shift key, and use the direction keys to move the penguin directly. 
+A cheating mode is implemented for the convenience of testing, which the player can press and hold the left shift key, and use the direction keys to move the penguin freely in all directions. 
 
 The skyline shader and snow effect were used to create a more realistic and fantastic environment, and will be further explained in details. 
 
 Post-task walkthroughs and interview were used as the querying technique and observational method for the evaluation, and improvements have been made. 
 
-Details of the key implementations will be explained below. 
+Details of the key implementations will be explained below.
 
-## Technologies
+## Game Mechanics
 
-Project is created with:
-* Unity 2019.4.3f1
-* Visual Studio Code 1.49.0
-* Github Desktop version 2.5.5
+The player is able to jump up the tower. While midair, the player is unable to control the direction it is moving in. Thus, players have to plan how and where to jump.
+
+The player is also able to walk while on ground.
+
+There are two key objects: the player and the tower/cylinder. We wanted an effect as if the player is going around the tower. 
+
+### Player and Tower
+The player is fixed on the X and Z axis and only modify the Y axis based on the elevation. 
+
+The tower is fixed in world space, with all rotational axises also fixed except for the Y axis. To simulate the horizontal everytime the player moves, we rotate the tower by using the AddTorque() method from the Tower's rigidbody, which gives the optical illusion as if the player is moving around the tower.
+
+The tower is set to a very high mass to prevent objects from rotating the tower.
+
+### Jumping
+
+When the player jumps, a Y velocity is added onto the Player's rigidbody component, which launches the player into the air. To prevent the player from jumping mid air, we need to have a ground check. This is done by using the Physics.BoxCast() function which checks for the ground underneath the player.
+
+### Walking
+
+When the ground check is active, the player is allow to walk either left or right. A fixed angular speed for the tower is set once a directional button is pressed. Else, the angular speed is set to 0 to stop the player from sliding.
+
+### Gravity
+
+A typical jump follows a normal parabola which is accurate in real life but feels sluggish in games. To fix this issue, the player also has gravity script, which changes the Player's falling speed to make jumping easier and more accurate for players, as well as to improve the feeling of jumping.
+
+### Bouncing
+
+The player also has a BounceHorizontal object which makes the players bounce off walls throughtout the game. The usual method of applying a Physics Material does not work in this case as due to the rotational physics we have for the tower. Thus, BounceHorizontal has a Trigger Box Collider, which reverses the tower's angular velocity if the collider comes into contact with a platform.
+
 
 ## Graphics pipeline implementation
 
+
 ## Camera motion
 
-## Shader implementation
+For the camera, we chose a third person view as the game is a third-person platformer. The camera system follows the "world in hand" approach as the camera's navigation is reliant on the player's position in the enviroment. This is done by simply attaching the main camera to the player object, which results in the camera following the player around.
+
+## Custom Shaders
+
+Two custom shaders were written for the project, one for the terrain and one for the skybox.
+
+### Snow Shader
+
+The majority of the terrain in the game uses the snow shader. The shader is a custom multipass shader where a phong shading model is first applied. 
+
+The Phong Shader consists of three parts: Ambient, Diffuse and Specular. As a snow does reflect some light, we set the speculation constant to 1, and the shininess constant to 1, which gave us the effect we wanted.
+
+The second part is a surface shader that applies multiple maps onto the objects. 
+
+The maps are:
+- Normal (Bump) map is used to make the texture look like it has bumps.
+- Height map is used to modify the underlying mesh.
+- Occlusion map is used to improve shadow detail.
+- Texture for the standard 2D texture to be applied.
+
+The second part also adds an emission color to the snow to create a cartoony blue snow effect.
+
+### Skybox Shader
+
+A custom skybox shader was created for the skybox transitions during the game. The shader was written to accept 3 Skybox cube textures, with a blend attribute which controls the blend between the skyboxes. A C# script is then used to modify the value of the blend depending on how far the player has progressed. 
+
+The blend is a range from 0 - 2. A blend value between 0 and 1 will blend skybox0 and skybox1 together, whereas a value between 1 and will blend skybox1 and skybox2 together. If the blend values are whole numbers (0,1,2), they correspond to the skyboxes without any blend effects.
+
+## Particle Systems
+
+Two particle systems were used for the game. One is used to simulate falling snow, the other is used to simulate environmental response to player movement (Jumping and Landing).
+
+### Snow Environment
+
+This particle system simulates snow slowly falling. To do this, we first set the shape of the particle system to a box. The particles were given a random X velocity between 2 values for randomness, with a negative Y value to make the snow fall. 
+
+Multiple prefab instances of the particle systems are then placed throughout the tower as a child of the tower. This makes the snow rotate together with the tower in local space.
+
+### Jump and Land Effects
+
+This particle system simulates the movement of snow particles when a player jumps or lands. To do this, a prefab of a particle system was created where the particles were given a high initial positive Y velocity and then transitions to a negative Y velocity over time. The X velocity is generated randomly over a range to make it look realistic.
+
+When a player jumps, a prefab of this particle system is generated at the postion when the player leaves the ground. After a few seconds, this is destroyed. This system is attached as child of tower, so that it rotates according to the tower movement as well.
+
+
+## Sound
+
+The AudioManager manages all the sound that is present in the game. This is done with a custom Sound class which are stored as an array in the AudioManager. The AudioManager is then able to play specific sounds given a string name that corresponds to the name that the sound was initialized with.
+
+## Animations
+
+The animation comes with the asset that we imported for the Player. A custom Animator was created to fit the needs of our PlayerController class, which updates corresponding values of the Animator depending on what the player does.
+
+## UI
+
+### Jump Power Bar
+
+This UI element shows the amount of power in the player's jump when the jump button is released. To do this, a custom Powerbar class is created, whose values can be updated externally by the PlayerController class to reflect the jumpPower value. The bar moves up and down to give more flexibility to the player.
+
+### Progress Bar
+This element shows the player's progress of the level. The same Powerbar used for Jumping is used here as well. This is done by constantly updating the ratio calculated from the tower's highest Y point and the player's current Y position.
+
+
 
 ## Querying and observational method
 
@@ -82,6 +172,14 @@ Fifth, the control button has been improved. ........// how did we improve this?
 ## Reference list
 
 -----------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+## Technologies
+
+Project is created with:
+* Unity 2019.4.3f1
+
 
 Final Electronic Submission (project): **4pm, Fri. 6 November**
 
