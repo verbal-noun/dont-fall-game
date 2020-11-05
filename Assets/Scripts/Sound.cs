@@ -17,5 +17,8 @@ public class Sound
     public bool loop;
 
     [HideInInspector]
+    public float maxVolume;
+
+    [HideInInspector]
     public AudioSource source;
 }

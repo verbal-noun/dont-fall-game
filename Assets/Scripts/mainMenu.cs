@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour {
+
+    private AudioManager audio = AudioManager.instance;
     public void PlayGame ()
 
     {
@@ -13,6 +15,8 @@ public class MainMenu : MonoBehaviour {
         SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex + 1);
 
     }
+    
+
 
     public void QuitGame () {
         Debug.Log ("QUIT!");
