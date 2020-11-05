@@ -5026,6 +5026,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7631226702301544754, guid: 6e114499c035a3349abe69d9563ecdbd,
         type: 3}
+      propertyPath: sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7631226702301544754, guid: 6e114499c035a3349abe69d9563ecdbd,
+        type: 3}
       propertyPath: dialog
       value: 
       objectReference: {fileID: 1721216279}
@@ -12588,7 +12593,7 @@ PrefabInstance:
     - target: {fileID: 4534363675584945743, guid: 3cb31e579ea6c1946aee5fc4c7eb59f1,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -47
+      value: -46
       objectReference: {fileID: 0}
     - target: {fileID: 4534363675584945743, guid: 3cb31e579ea6c1946aee5fc4c7eb59f1,
         type: 3}

@@ -18,10 +18,17 @@ TODO CHANGE CONTENTS STRUCTURE
 
 | Name              |           Task           | State |
 | :---------------- | :----------------------: | ----: |
-| Kaif Ahsan        |   |   |
-| Khant Thurein Han |     |   |
+| Kaif Ahsan        |  |  |
+| Khant Thurein Han | Player Mechanics  | Done |
+| Khant Thurein Han | Animations  | Done |
+| Khant Thurein Han | Sound + AudioManager | Done |
+| Khant Thurein Han | Particle Effects | Done |
+| Khant Thurein Han | Progress bar | Done |
+| Khant Thurein Han | Power bar | Done |
+| Khant Thurein Han | Sign + Dialog | Done |
+| Khant Thurein Han | Shaders | Done |
 | Hanyong Zhou      |  |  |
-| Zenan Huang       |  |   |
+| Zenan Huang       |  |  |
 
 ## General info and explanation
 
@@ -254,45 +261,6 @@ Fifth, the issue with unintuitive button controls have been fixed by adding sign
 Project is created with:
 * Unity 2019.4.3f1
 
-
------------------------------------------
-
-Gloryce's team, project 1 
-
-## Diamond-Square implementation
-
-The Diamond Square algorithm was implemented in two stages within the code. The first stage gave us a 2D array where the indexes are the x and z coordinates and the value is the y coordinate. This stage exists within the function Generate points and uses the algorithm as presented here: https://davidscodevault.com/2015/11/28/diamond-square-algorithm/.
-
-The second stage takes this 2D array and transforms it into the vertices and triangles and applies colours and finds normals. This exists within the mesh function CreateShape.
-We take two public inputs, an integer called power takes the place of n in formula 2^n+1 allowing us to alter the size of the terrain while maintaining the required ratio. The second is Entropy which we use to control the extent of randomness in heights later on. Further in controlling heights we limited the maximum height to the width of the map over 3, as well as using designated height starting points on the corners. This was to counteract issues where the maps were all being generated drastically low or high, with little variation.
-
-To generate the points we start with the four corners and take the mid points first for the square part of the algorithm, then the diamond part. Then we drop down a “layer” of the fractal and repeat the process for all points at that “layer”. Once the distance between points on a layer is less than 1 we stop.
-
-The square stage is easy, starting at our smallest increment away from (0, 0) we work our way to (width, width) at increments of i/2 where i is the “size” of a diamond or square at this layer. Height is an average of the 4 corner points +- a random value between 0 and 1 times height times entropy.
-
-Diamond stage is a little more complicated, the concept is still the same but the process isn’t because the x and z values align in a diamond grid and not a square one. We essentially have two patterns. The point at x=0 for height z is a diamond corner or that same point is a diamond centre. If it’s a corner z % i = 0. In this situation we start x at i/2. If it’s a centre we start x at 0. Further x is increased by increments of i while z is increased by i/2. Otherwise it works the same as a square.
-
-
-## Terrain
-
-Once we have our points generated, we store them in a 1d array of size width * width. We then iterate over each "square" set of four points generating 2 triangles for each square and alternating their orientation. We generate the surface normals for each triange, and add them to a stored vertex normal for each vertex in the triangle. We generate the colour of the vertices using our colour function, based on the height, and store these in a 1d array of size width * width. Finally we average and normalize the sum of all surface normals each vertex is a part of to get the vertex normals. The colours, vertices, triangles, and normals are all then assigned to the mesh.
-
-
-## Camera Motion
-
-The cameras rotation is controlled by the mouse. We take the change in x and y of the mouse each frame, and add them onto the total change of the mouse over the entire game. We make sure the total x change is less than 360 by taking the modulus of it and 360, to avoid overflow if the game goes on a really long time. We also make sure the y change is between -90 and 90 by clamping its value between these points. This is to make sure the player can't look up or down so much that their camera flips upsidown. The total change in angle is then set as the cameras angle directly by setting the camera objects euler angles
-
-The cameras movement is controlled by the wasd keys. Each frame if the forward or backwards key is held, but not both, and if the left or right key is held, but not both, a variable dictating the forward and sideways move is set. The camera then sends out a sphere cast, and detects if this sphere colides with anything. If it does, it indicates that the camera has stopped moving, and sets its current speed and acceleration to 0. If it does not collide with anything, the camera moves in the designated direction. While any key is held down, a variable will increase indicating the cameras's acceleration, and while no movement key is held down, it will decrease. This variable will always be between 0 and 1, and is multiplied by the movement of the camera.
-
-
-## Wave Implementation
-
-The waves were created with a flat plane consisting of a custom mesh just below the yellow "beaches" of the mountain terrain. A custom shader was applied that modified the vertical displacement based on the addition of two sin waves along the main two axis. The normals were calculated based on the derivative of both sin waves added together, based on the formula found at https://stackoverflow.com/questions/24165608/recalculating-normal-with-curve-sine-wave,  slightly modified to conform to the parameters of our wave function.
-The waves went through several iterations before we settled on the final function, however we decided that the wave function as it stands strikes a good mix between being detailed enough to look realistic whilst not being too detailed to seem overly uniform and jarringly formulaic.
-
-## Vertex Shader
-
-We used the phong vertex shader provided by the tutorials for both the lighting on the waves and the landscape.Te normals were calculated either during landscape generation or from transformations within the wave shader prior to lighting being applied. these normals were then fed into the formula provided within the tutorials, of ambient + diffuse reflection + speccular reflection. We did attempt to fine tune the constants, as the intial application was highly relfective and made the landscape look plastic. While our product is not perfect it is significantly better than were we started. The ambient component was left alone with an ambient constant of 1 and the attuenuation factor was set as .5 for the diffuse reflections. the specular component was were we played the most. Testing between the true value and the Blinn-Phong aproximation lead us to choose the Blinn-Phong as we found we had signifcantly more room to lower the specular power(specN). which we set to 8 allongside a specular constant of .3 for the landscape and 1 for the waves. while many of these constants are low we found that anything higher resulted in signifcant shininess. 
 
 
 
