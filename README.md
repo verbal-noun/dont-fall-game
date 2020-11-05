@@ -166,9 +166,6 @@ fixed4 frag (v2f i) : SV_Target
 
 For the SnowShader, since we used a multipass shader, after applying Phong shading at the pixel shader stage, we repeat the pixel shader stage again for the surface shader effects.
 
-Otherwise, the graphics pipeline was not modified in anyway.
-
-
 ## Particle Systems
 
 Two particle systems were used for the game. One is used to simulate falling snow, the other is used to simulate environmental response to player movement (Jumping and Landing).
