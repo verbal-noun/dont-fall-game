@@ -11,13 +11,9 @@ public class Powerbar : MonoBehaviour
 
     public float power = 50;
 
-    [SerializeField]
     private float minimumPower = 0;
-    [SerializeField]
     private float maximumPower = 100;
-    [SerializeField]
     private int lowPower = 33;
-    [SerializeField]
     private int highPower = 66;
     public Color highPowerColor = new Color(0.35f, 1f, 0.35f);
     public Color mediumPowerColor = new Color(0.9450285f, 1f, 0.4481132f);
@@ -33,13 +29,9 @@ public class Powerbar : MonoBehaviour
     {
         maximumPower = value;
         powerbarDisplay.maxValue = value;
+        this.lowPower = (int)Mathf.Round(value * 1/3);
+        this.highPower = (int)Mathf.Round(value * 2/3);
     }
-    public void SetLowHighColor(float lp, float hp)
-    {
-        this.lowPower = (int)Mathf.Round(lp);
-        this.highPower = (int)Mathf.Round(hp);
-    }
-
     private void Update()
     {
 

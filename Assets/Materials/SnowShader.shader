@@ -7,6 +7,7 @@
         _Normal ("Normal", 2D) = "white" {}
         _Height ("Height", 2D) = "white" {}
         _Occlusion ("Occlusion", 2D) = "white" {}
+        _SpecN ("Speculation factor", float) = 1
         //Add Emission to simulate snow reflection
         [HDR] _EmissionColor("Emission Color", Color) = (0,0,0)
     }
@@ -31,6 +32,7 @@
             sampler2D _Tex; 
             //For tiling 
             float4 _Tex_ST; 
+            float _SpecN;
 
             uniform float4 _Colour;
             uniform float4 _SpecColour;
@@ -85,10 +87,14 @@
                 float3 ambientLighting = UNITY_LIGHTMODEL_AMBIENT.rgb * _Colour.rgb;
                 // Diffuse component 
                 float3 diffuseReflection = _LightColor0.rgb * _Colour.rgb * 
-                max(0.0, dot(normalDirection, lightDirection)) * attenuation;   
+                max(0.0, dot(normalDirection, lightDirection)) * attenuation;  
+
+                float3 H = normalize(viewDirection + lightDirection);
+
+                float3 spec = attenuation * _LightColor0  * pow(saturate(dot(normalDirection, H)), _SpecN); 
 
                 // Calculating colour based on the three components 
-                float3 color = (ambientLighting + diffuseReflection) * tex2D(_Tex, i.uv);
+                float3 color = (ambientLighting + diffuseReflection + spec) * tex2D(_Tex, i.uv);
                 return float4(color, 1.0);
             }
             
