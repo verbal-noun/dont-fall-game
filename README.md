@@ -2,6 +2,7 @@
 # COMP30019 – Graphics and Interaction
 
 ## Table of contents
+TODO CHANGE CONTENTS STRUCTURE
  - [Table of contents](#table-of-contents)
  - [Team Members](#team-members)
  - [General info and explanation](#general-info-and-explanation)
@@ -23,6 +24,8 @@
 | Zenan Huang       |  |   |
 
 ## General info and explanation
+
+TODO BREAK DOWN GENERAL INFO INTO SUBSECTIONS
 
 This is project 2 of subject COMP30019 in the University of Melbourne. In this project, the storyline and the main purpose is a penguin trying to climb to the top of the mountain and fly like the birds. The game is purposed to give a relaxing and challenging feeling to the players. 
 
@@ -131,6 +134,8 @@ The maps are:
 
 The second part also adds an emission color to the snow to create a cartoony blue snow effect.
 
+TODO ADD PICTURE OF TERRAIN
+
 ### Skybox Shader
 
 A custom skybox shader was created for the skybox transitions during the game. The shader was written to accept 3 Skybox cube textures, with a blend attribute which controls the blend between the skyboxes. A C# script is then used to modify the value of the blend depending on how far the player has progressed. 
@@ -160,7 +165,7 @@ fixed4 frag (v2f i) : SV_Target
     return half4(c, 1);
 }
 ```
-
+TODO ADD PICTURE OF SKYBOX TRANSTION OR GIF OF TRANSITION
 
 ## Graphics pipeline
 
@@ -176,12 +181,15 @@ This particle system simulates snow slowly falling. To do this, we first set the
 
 Multiple prefab instances of the particle systems are then placed throughout the tower as a child of the tower. This makes the snow rotate together with the tower in local space.
 
+TODO ADD SNOW GIF
+
 ### Jump and Land Effects
 
 This particle system simulates the movement of snow particles when a player jumps or lands. To do this, a prefab of a particle system was created where the particles were given a high initial positive Y velocity and then transitions to a negative Y velocity over time. The X velocity is generated randomly over a range to make it look realistic.
 
 When a player jumps, a prefab of this particle system is generated at the postion when the player leaves the ground. After a few seconds, this is destroyed. This system is attached as child of tower, so that it rotates according to the tower movement as well.
 
+TODO ADD JUMP GIF
 
 ## Sound
 
@@ -197,8 +205,12 @@ The animation comes with the asset that we imported for the Player. A custom Ani
 
 This UI element shows the amount of power in the player's jump when the jump button is released. To do this, a custom Powerbar class is created, whose values can be updated externally by the PlayerController class to reflect the jumpPower value. The bar moves up and down to give more flexibility to the player.
 
+TODO ADD IMAGE OR GIF OF POWERBAR
+
 ### Progress Bar
 This element shows the player's progress of the level. The same Powerbar used for Jumping is used here as well. This is done by constantly updating the ratio calculated from the tower's highest Y point and the player's current Y position.
+
+TODO ADD IMAGE OF PROGRESS BAR
 
 
 
@@ -226,7 +238,7 @@ Third, the collider problems have been fixed. Weird landing position or missing 
 
 Fourth, we added more decorations, such as the crystals and signs. The color is changing with the height now, from the light blue at the bottom and dark blue on the top. The volume control button was implemented, and the players can adjust the volume by themselves. More sound effects, such as the falling sound, was added.
 
-Fifth, the control button has been improved. ........// how did we improve this? 
+Fifth, the issue with unintuitive button controls have been fixed by adding signs to instruct the users. Also, a slight time buffer was added to account for the case where the user releases both the jump and directional buffer at the same time. The old implementation forces the directional button to be held down due to Input.GetAxis("Horizontal") needing to be either 1 or -1 for directional jumps. This is done by lowering the input sensitivity from the Input Manager and using the Mathf.Sign(Input.GetAxis("Horizontal")) to accept all values greater or less than 0.
 
 ## Reference list
 
@@ -237,123 +249,13 @@ Fifth, the control button has been improved. ........// how did we improve this?
 - Bars: https://assetstore.unity.com/packages/tools/gui/simple-healthbars-132547
 
 
-
------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-
 ## Technologies
 
 Project is created with:
 * Unity 2019.4.3f1
 
 
-Final Electronic Submission (project): **4pm, Fri. 6 November**
-
-Do not forget **One member** of your group must submit a text file to the LMS (Canvas) by the due date which includes the commit ID of your final submission.
-
-You can add a link to your Gameplay Video here but you must have already submit it by **4pm, Sun. 25 October**
-
-# Project-2 README
-
-You must modify this `README.md` that describes your application, specifically what it does, how to use it, and how you evaluated and improved it.
-
-Remember that _"this document"_ should be `well written` and formatted **appropriately**. This is just an example of different formating tools available for you. For help with the format you can find a guide [here](https://docs.github.com/en/github/writing-on-github).
-
-
-**Get ready to complete all the tasks:**
-
-- [x] Read the handout for Project-2 carefully
-
-- [ ] Brief explanation of the game
-
-- [ ] How to use it (especially the user interface aspects)
-
-- [ ] How you modelled objects and entities
-
-- [ ] How you handled the graphics pipeline and camera motion
-
-- [ ] Descriptions of how the shaders work
-
-- [ ] Description of the querying and observational methods used, including: description of the participants (how many, demographics), description of the methodology (which techniques did you use, what did you have participants do, how did you record the data), and feedback gathered.
-
-- [ ] Document the changes made to your game based on the information collected during the evaluation.
-
-- [ ] A statement about any code/APIs you have sourced/used from the internet that is not your own.
-
-- [ ] A description of the contributions made by each member of the group.
-
-## Table of contents
-- [COMP30019 – Graphics and Interaction](#comp30019--graphics-and-interaction)
-  - [Table of contents](#table-of-contents)
-  - [Team Members](#team-members)
-  - [General info and explanation](#general-info-and-explanation)
-  - [Technologies](#technologies)
-  - [Graphics pipeline implementation](#graphics-pipeline-implementation)
-  - [Camera motion](#camera-motion)
-  - [Shader implementation](#shader-implementation)
-  - [Querying and observational method](#querying-and-observational-method)
-  - [Changes and improvements according to the evaluation](#changes-and-improvements-according-to-the-evaluation)
-  - [Reference list](#reference-list)
-- [Project-2 README](#project-2-readme)
-  - [Table of contents](#table-of-contents-1)
-  - [Team Members](#team-members-1)
-  - [Explanation of the game](#explanation-of-the-game)
-  - [Technologies](#technologies-1)
-  - [Using Images](#using-images)
-  - [Code Snippets](#code-snippets)
-  - [Diamond-Square implementation](#diamond-square-implementation)
-  - [Terrain](#terrain)
-  - [Camera Motion](#camera-motion-1)
-  - [Wave Implementation](#wave-implementation)
-  - [Vertex Shader](#vertex-shader)
-
-## Team Members
-
-| Name | Task | State |
-| :---         |     :---:      |          ---: |
-| Student Name 1  | MainScene     |  Done |
-| Student Name 2    | Shader      |  Testing |
-| Student Name 3    | README Format      |  Amazing! |
-
-## Explanation of the game
-Our game is a first person shooter (FPS) that....
-
-You can use emojis :+1: but do not over use it, we are looking for professional work. If you would not add them in your job, do not use them here! :shipit:
-
-	
-## Technologies
-Project is created with:
-* Unity 2019.4.3f1
-* Ipsum version: 2.33
-* Ament library version: 999
-
-## Using Images
-
-You can use images/gif by adding them to a folder in your repo:
-
-<p align="center">
-  <img src="Gifs/Q1-1.gif"  width="300" >
-</p>
-
-To create a gif from a video you can follow this [link](https://ezgif.com/video-to-gif/ezgif-6-55f4b3b086d4.mov).
-
-## Code Snippets 
-
-You can include a code snippet here, but make sure to explain it! 
-Do not just copy all your code, only explain the important parts.
-
-```c#
-public class firstPersonController : MonoBehaviour
-{
-    //This function run once when Unity is in Play
-     void Start ()
-    {
-      standMotion();
-    }
-}
-```
----------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------
 
 Gloryce's team, project 1 
 
