@@ -1,9 +1,6 @@
 using UnityEngine;
 
 public class CheatScript : MonoBehaviour {
-    public KeyCode specialKey;
-    public KeyCode upArrow;
-    public KeyCode downArrow;
 
     public GameObject mountain;
     private bool cheatMode = false;
