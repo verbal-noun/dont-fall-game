@@ -24,9 +24,7 @@ public class Dialog : MonoBehaviour
     }
 
     void Update(){
-        if (text.text.Equals(sentences[index])){
-            continueButton.SetActive(true);
-        }
+        continueButton.SetActive(text.text.Equals(sentences[index]));
 
         if (continueButton.activeSelf && Input.GetKeyDown(KeyCode.E)){
             NextSentence();
@@ -47,6 +45,7 @@ public class Dialog : MonoBehaviour
             StartCoroutine(Type());
         }
         else {
+            index = 0;
             text.text = "";
             continueButton.SetActive(false);
             textbox.SetActive(false);

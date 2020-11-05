@@ -91,7 +91,7 @@
 
                 float3 H = normalize(viewDirection + lightDirection);
                 // Speculation component
-                float specConstant = 1f;
+                float specConstant = 1;
                 float3 spec = attenuation * _LightColor0  * specConstant * pow(saturate(dot(normalDirection, H)), _SpecN); 
 
                 // Calculating colour based on the three components 
