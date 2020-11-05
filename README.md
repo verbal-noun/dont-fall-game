@@ -137,14 +137,6 @@ A custom skybox shader was created for the skybox transitions during the game. T
 
 The blend is a range from 0 - 2. A blend value between 0 and 1 will blend skybox0 and skybox1 together, whereas a value between 1 and will blend skybox1 and skybox2 together. If the blend values are whole numbers (0,1,2), they correspond to the skyboxes without any blend effects.
 
-
-## Graphics pipeline
-
-For the SnowShader, since we used a multipass shader, after applying Phong shading at the pixel shader stage, we repeat the pixel shader stage again for the surface shader effects.
-
-Otherwise, the graphics pipeline was not modified in anyway.
-
-
 ```c#
 fixed4 frag (v2f i) : SV_Target
 {
@@ -168,6 +160,14 @@ fixed4 frag (v2f i) : SV_Target
     return half4(c, 1);
 }
 ```
+
+
+## Graphics pipeline
+
+For the SnowShader, since we used a multipass shader, after applying Phong shading at the pixel shader stage, we repeat the pixel shader stage again for the surface shader effects.
+
+Otherwise, the graphics pipeline was not modified in anyway.
+
 
 ## Particle Systems
 

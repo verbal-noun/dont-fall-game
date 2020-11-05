@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+// Code referenced from https://assetstore.unity.com/packages/tools/gui/simple-healthbars-132547
 public class Powerbar : MonoBehaviour
 {
 
