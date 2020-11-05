@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 199806}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 3.39, y: 48.1, z: -45.54}
-  m_LocalScale: {x: 0.022974322, y: 0.02297432, z: 0.022974322}
+  m_LocalScale: {x: 0.002331136, y: 0.0023279593, z: 0.0026427382}
   m_Children:
   - {fileID: 2035406413825952644}
   - {fileID: 2447738927927462828}
@@ -45,8 +45,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.9999998, y: 1.6974449, z: 1.4242951}
-  m_Center: {x: 5.547232e-18, y: 0.86300206, z: 0.007758237}
+  m_Size: {x: 230.06094, y: 271.66357, z: 177.29146}
+  m_Center: {x: 60.296192, y: 113.60629, z: 18.027197}
 --- !u!114 &7631226702301544754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,8 +61,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialog: {fileID: 0}
   sentences:
-  - Press and hold the spacebar to jump.
-  - Use the left and right arrow keys to jump towards desired direction.
+  - The way to go is up
 --- !u!1 &1914788872591816040
 GameObject:
   m_ObjectHideFlags: 0
@@ -88,8 +87,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1914788872591816040}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: 2.67, z: -0.6}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalPosition: {x: -14, y: 294, z: 2}
+  m_LocalScale: {x: 10.125461, y: 10.125461, z: 10.125461}
   m_Children: []
   m_Father: {fileID: 469052}
   m_RootOrder: 1
@@ -209,12 +208,17 @@ PrefabInstance:
     - target: {fileID: 3732306556532179143, guid: 02dd1d6ae8ff49043abf198d5a1b0fea,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.5
+      value: 199.06857
       objectReference: {fileID: 0}
     - target: {fileID: 3732306556532179143, guid: 02dd1d6ae8ff49043abf198d5a1b0fea,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.5
+      value: 199.06857
+      objectReference: {fileID: 0}
+    - target: {fileID: 3732306556532179143, guid: 02dd1d6ae8ff49043abf198d5a1b0fea,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 79.627426
       objectReference: {fileID: 0}
     - target: {fileID: 7467656431084113468, guid: 02dd1d6ae8ff49043abf198d5a1b0fea,
         type: 3}
