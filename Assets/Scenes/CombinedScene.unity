@@ -10238,7 +10238,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1978364428}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0.95501995, z: 0, w: 0.2965417}
   m_LocalPosition: {x: -0.0000042348, y: 95.1, z: 0.0000084698}
   m_LocalScale: {x: 87.05372, y: 87.05372, z: 87.05372}
   m_Children:
@@ -10252,7 +10252,7 @@ Transform:
   - {fileID: 1001410762}
   m_Father: {fileID: 0}
   m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 145.5, z: 0}
 --- !u!1 &1996356521
 GameObject:
   m_ObjectHideFlags: 0
@@ -11305,7 +11305,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 199806, guid: 6e114499c035a3349abe69d9563ecdbd, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 469052, guid: 6e114499c035a3349abe69d9563ecdbd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11313,7 +11313,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 469052, guid: 6e114499c035a3349abe69d9563ecdbd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 16.37
+      value: 73.01
       objectReference: {fileID: 0}
     - target: {fileID: 469052, guid: 6e114499c035a3349abe69d9563ecdbd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11368,6 +11368,11 @@ PrefabInstance:
       propertyPath: dialog
       value: 
       objectReference: {fileID: 1721216279}
+    - target: {fileID: 7631226702301544754, guid: 6e114499c035a3349abe69d9563ecdbd,
+        type: 3}
+      propertyPath: sentences.Array.data[0]
+      value: Wrong way. Go left.
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e114499c035a3349abe69d9563ecdbd, type: 3}
 --- !u!65 &3030134696600482756
