@@ -2,7 +2,6 @@
 # COMP30019 – Graphics and Interaction
 
 ## Table of contents
-TODO CHANGE CONTENTS STRUCTURE
  - [Table of contents](#table-of-contents)
  - [Team Members](#team-members)
  - [General info and explanation](#general-info-and-explanation)
@@ -159,7 +158,9 @@ The maps are:
 
 The second part also adds an emission color to the snow to create a cartoony blue snow effect.
 
-TODO ADD PICTURE OF TERRAIN
+<p align="center">
+  <img src="Images/Terrain.png"  width="350" >
+</p>
 
 ### Skybox Shader
 
@@ -190,7 +191,9 @@ fixed4 frag (v2f i) : SV_Target
     return half4(c, 1);
 }
 ```
-TODO ADD PICTURE OF SKYBOX TRANSTION OR GIF OF TRANSITION
+<p align="center">
+  <img src="Images/Skybox.gif"  width="350" >
+</p>
 
 ## Graphics pipeline
 
@@ -206,7 +209,9 @@ This particle system simulates snow slowly falling. To do this, we first set the
 
 Multiple prefab instances of the particle systems are then placed throughout the tower as a child of the tower. This makes the snow rotate together with the tower in local space.
 
-TODO ADD SNOW GIF
+<p align="center">
+  <img src="Images/SnowEffect.gif"  width="350" >
+</p>
 
 ### Jump and Land Effects
 
@@ -214,7 +219,9 @@ This particle system simulates the movement of snow particles when a player jump
 
 When a player jumps, a prefab of this particle system is generated at the postion when the player leaves the ground. After a few seconds, this is destroyed. This system is attached as child of tower, so that it rotates according to the tower movement as well.
 
-TODO ADD JUMP GIF
+<p align="center">
+  <img src="Images/Jump.gif"  width="350" >
+</p>
 
 ## Sound
 
@@ -230,14 +237,16 @@ The animation comes with the asset that we imported for the Player. A custom Ani
 
 This UI element shows the amount of power in the player's jump when the jump button is released. To do this, a custom Powerbar class is created, whose values can be updated externally by the PlayerController class to reflect the jumpPower value. The bar moves up and down to give more flexibility to the player.
 
-TODO ADD IMAGE OR GIF OF POWERBAR
+<p align="center">
+  <img src="Images/PowerBar.png"  width="350" >
+</p>
 
 ### Progress Bar
 This element shows the player's progress of the level. The same Powerbar used for Jumping is used here as well. This is done by constantly updating the ratio calculated from the tower's highest Y point and the player's current Y position.
 
-TODO ADD IMAGE OF PROGRESS BAR
-
-
+<p align="center">
+  <img src="Images/ProgressBar.png"  width="350" >
+</p>
 
 ## Querying and observational method
 
