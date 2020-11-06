@@ -7014,6 +7014,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level2
       objectReference: {fileID: 0}
+    - target: {fileID: 6908370904288589830, guid: ecb0546caef960d4bb7a2ef743fc2163,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.647322
+      objectReference: {fileID: 0}
+    - target: {fileID: 6908370904288589830, guid: ecb0546caef960d4bb7a2ef743fc2163,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6908370904288589830, guid: ecb0546caef960d4bb7a2ef743fc2163,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6908370904288589830, guid: ecb0546caef960d4bb7a2ef743fc2163,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.72
+      objectReference: {fileID: 0}
     - target: {fileID: 7631226700617351040, guid: ecb0546caef960d4bb7a2ef743fc2163,
         type: 3}
       propertyPath: dialog
