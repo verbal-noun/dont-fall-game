@@ -81,9 +81,19 @@ One day in the snowfield, a penguin was wandering around, and he suddenly saw so
 
 The menu includes "Play" button for starting the game, "Option" button for adjusting the volume, and "Quit" button for quitting the game. Once the player pressed "Play", a trailer of the storyline video will be played, and the space key can be used to skip the video.
 
-A small tutorial will be shown about the play mechanism. The penguin will implement two mechanisms: jumping and walking. For jumping, the space key should be pressed and held, and the left and right keys should control the direction. The higher the player get, the narrower the stones will be, so that the level of difficulties increases. The player can also walk left or right by pressing left and right keys, to adjust the start-jumping position.
+A small tutorial will be shown about the play mechanism. The penguin will implement two mechanisms: jumping and walking. For jumping, the **space key** should be pressed and held, and the **left and right keys** should control the direction. The higher the player get, the narrower the stones will be, so that the level of difficulties increases. The player can also walk left or right by pressing left and right keys, to adjust the start-jumping position.
 
 There is a power bar indicating the power, so as the height of jumping on the left bottom corner. The longer the power bar is, the higher the penguin will jump. Also, there is a position bar indicating the height the penguin has climbed, and it changes according to the penguin's position in relation to the cylinder.
+
+**Key Bindings**
+| Key | Action |
+| :---------------- | :------------------------: |
+| Space Bar | Jump |
+| Right arrow | Move right |
+| Left arrow | Move Left |
+| Left Shift | Holding Activates cheat mode |
+
+#### Cheat Script
 
 ### Overall design
 
