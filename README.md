@@ -2,6 +2,9 @@
 
 # COMP30019 – Graphics and Interaction
 
+<p>
+<img src="Assets/Images/banner.png" width="800">
+</P>
 ## Table of contents
 
 TODO CHANGE CONTENTS STRUCTURE
@@ -54,8 +57,7 @@ TODO CHANGE CONTENTS STRUCTURE
 | Khant Thurein Han |         Animations         |  Done |
 | Khant Thurein Han |    Sound + AudioManager    |  Done |
 | Khant Thurein Han |      Particle Effects      |  Done |
-| Khant Thurein Han |        Progress bar        |  Done |
-| Khant Thurein Han |         Power bar          |  Done |
+| Khant Thurein Han |    Progress & Power bar    |  Done |
 | Khant Thurein Han |       Sign + Dialog        |  Done |
 | Khant Thurein Han |          Shaders           |  Done |
 | Hanyong Zhou      | Level Design & Development |  Done |
@@ -89,7 +91,7 @@ The overall design is a snow scene with a cylinder in the middle representing th
 
 ### Evaluation and report
 
-Post-task walkthroughs and interview were used as the querying technique and observational method for the evaluation, and improvements have been made.
+Post-task walk-through and interview were used as the querying technique and observational method for the evaluation, and improvements have been made.
 
 ## Game Mechanics
 
