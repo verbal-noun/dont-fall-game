@@ -16,6 +16,8 @@ TODO CHANGE CONTENTS STRUCTURE
     - [Storyline](#storyline)
     - [How to play](#how-to-play)
     - [Overall design](#overall-design)
+    - [Cheating mode](#cheating-mode)
+    - [Shader effect](#shader-effect)
     - [Evaluation and report](#evaluation-and-report)
   - [Game Mechanics](#game-mechanics)
     - [Player and Tower](#player-and-tower)
@@ -93,15 +95,21 @@ There is a power bar indicating the power, so as the height of jumping on the le
 | Left arrow | Move Left |
 | Left Shift | Holding Activates cheat mode |
 
-#### Cheat Script
-
 ### Overall design
 
-The overall design is a snow scene with a cylinder in the middle representing the mountain, and there are many stones with different shapes on it for the penguin to step on. The difficulty of the game increases with the height, that the higher the penguin gets, the narrower and smaller the stones will be, and more techniques will be required to jump higher. The environment is a snowfield with snow flakes in the air. The background music is cheerful and relaxing with sound effects when the penguin jumps and falls.
+The overall design is a snow scene with a cylinder in the middle representing the mountain, and there are many stones with different shapes on it for the penguin to step on. The difficulty of the game increases with the height, that the higher the penguin gets, the narrower and smaller the stones will be, and more techniques will be required to jump higher. The environment is a snowfield with snow flakes in the air. The background music is cheerful and relaxing with sound effects when the penguin jumps and falls. 
+
+### Cheating mode
+
+A cheating mode is implemented for the convenience of testing, which the player can press and hold the left shift key, and use the direction keys to move the penguin freely in all directions. 
+
+### Shader effect
+
+The skyline shader and snow effect were used to create a more realistic and fantastic environment, and will be further explained in details. 
 
 ### Evaluation and report
 
-Post-task walk-through and interview were used as the querying technique and observational method for the evaluation, and improvements have been made.
+Post-task walkthroughs and interview were used as the querying technique and observational method for the evaluation, and improvements have been made. 
 
 ## Game Mechanics
 
