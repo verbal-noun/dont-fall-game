@@ -6,16 +6,20 @@ using UnityEngine.SceneManagement;
 public class nextScene : MonoBehaviour
 {
     private float startTime;
+    public bool skippable = true;
+    public float timeTillSkip = 34.5f;
+
     void Start() {
         startTime = Time.time;
     }
 
     void Update()
-    {
-        if (Input.GetKeyDown("space") || Time.time - startTime > 34.5)
+    {   
+        // Check if we can skip the cutscene, if not see if the cutscene has finished playing based on set time
+        if ((Input.GetKeyDown("space") && skippable) || (Time.time - startTime > timeTillSkip))
         {
-            AudioManager.instance.Play("Theme");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            //AudioManager.instance.Play("Theme");
+            SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex + 1) % SceneManager.sceneCountInBuildSettings);
         }
     }
 }

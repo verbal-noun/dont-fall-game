@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour {
+public class mainMenu : MonoBehaviour {
 
     private AudioManager audio = AudioManager.instance;
     public void PlayGame ()
