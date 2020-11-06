@@ -6,21 +6,43 @@
 
 TODO CHANGE CONTENTS STRUCTURE
 
-- [Table of contents](#table-of-contents)
-- [Team Members](#team-members)
-- [General info and explanation](#general-info-and-explanation)
-- [Game mechanisms](#game-mechanisms)
-- [Camera motion](#camera-motion)
-- [Custom shader](#custom-shader)
-- [Graphics pipeline](#graphics-pipeline)
-- [Particle systems](#particle-systems)
-- [Sound](#sound)
-- [Animation](#animation)
-- [UI](#ui)
-- [Querying and observational method](#querying-and-observational-method)
-- [Changes and improvements according to the evaluation](#changes-and-improvements-according-to-the-evaluation)
-- [Reference list](#reference-list)
-- [Technologies](#technologies)
+- [COMP30019 – Graphics and Interaction](#comp30019--graphics-and-interaction)
+  - [Table of contents](#table-of-contents)
+  - [Team Members](#team-members)
+  - [General info and explanation](#general-info-and-explanation)
+    - [Storyline](#storyline)
+    - [How to play](#how-to-play)
+    - [Overall design](#overall-design)
+    - [Cheating mode](#cheating-mode)
+    - [Shader effect](#shader-effect)
+    - [Evaluation and report](#evaluation-and-report)
+  - [Game Mechanics](#game-mechanics)
+    - [Player and Tower](#player-and-tower)
+    - [Jumping](#jumping)
+    - [Walking](#walking)
+    - [Gravity](#gravity)
+    - [Bouncing](#bouncing)
+  - [Camera motion](#camera-motion)
+  - [Custom Shaders](#custom-shaders)
+    - [Snow Shader](#snow-shader)
+    - [Skybox Shader](#skybox-shader)
+  - [Graphics pipeline](#graphics-pipeline)
+  - [Particle Systems](#particle-systems)
+    - [Snow Environment](#snow-environment)
+    - [Jump and Land Effects](#jump-and-land-effects)
+  - [Sound](#sound)
+  - [Animations](#animations)
+  - [UI](#ui)
+    - [Jump Power Bar](#jump-power-bar)
+    - [Progress Bar](#progress-bar)
+  - [Querying and observational method](#querying-and-observational-method)
+  - [Changes and improvements according to the evaluation](#changes-and-improvements-according-to-the-evaluation)
+    - [Difficulty](#difficulty)
+    - [Motivation](#motivation)
+    - [Bug fixes](#bug-fixes)
+    - [Controls](#controls)
+  - [Reference list](#reference-list)
+  - [Technologies](#technologies)
 
 ## Team Members
 
@@ -43,7 +65,7 @@ TODO CHANGE CONTENTS STRUCTURE
 | Hanyong Zhou      |  Intro + Ending Cutscenes  |    Done |
 | Zenan Huang       |         Aniamtion          |    Done |
 | Zenan Huang       |       Evaluatuation        |    Done |
-| Zenan Huang       |           Report           | Not yet |
+| Zenan Huang       |           Report           |    Done |
 
 ## General info and explanation
 
@@ -116,7 +138,7 @@ The player also has a BounceHorizontal object which makes the players bounce off
 
 ## Camera motion
 
-For the camera, we chose a third person view as the game is a third-person platformer. The camera system follows the "world in hand" approach as the camera's navigation is reliant on the player's position in the enviroment. This is done by simply attaching the main camera to the player object, which results in the camera following the player around.
+For the camera, we chose a third person view as the game is a third-person platformer. The camera system follows the "world in hand" approach as the camera's navigation is reliant on the player's position in the environment. This is done by simply attaching the main camera to the player object, which results in the camera following the player around.
 
 ## Custom Shaders
 
@@ -160,7 +182,9 @@ The maps are:
 
 The second part also adds an emission color to the snow to create a cartoony blue snow effect.
 
-TODO ADD PICTURE OF TERRAIN
+<p align="center">
+  <img src="Images/Terrain.png"  width="350" >
+</p>
 
 ### Skybox Shader
 
@@ -191,8 +215,9 @@ fixed4 frag (v2f i) : SV_Target
     return half4(c, 1);
 }
 ```
-
-TODO ADD PICTURE OF SKYBOX TRANSTION OR GIF OF TRANSITION
+<p align="center">
+  <img src="Images/Skybox.gif"  width="350" >
+</p>
 
 ## Graphics pipeline
 
@@ -208,7 +233,9 @@ This particle system simulates snow slowly falling. To do this, we first set the
 
 Multiple prefab instances of the particle systems are then placed throughout the tower as a child of the tower. This makes the snow rotate together with the tower in local space.
 
-TODO ADD SNOW GIF
+<p align="center">
+  <img src="Images/SnowEffect.gif"  width="350" >
+</p>
 
 ### Jump and Land Effects
 
@@ -216,7 +243,9 @@ This particle system simulates the movement of snow particles when a player jump
 
 When a player jumps, a prefab of this particle system is generated at the postion when the player leaves the ground. After a few seconds, this is destroyed. This system is attached as child of tower, so that it rotates according to the tower movement as well.
 
-TODO ADD JUMP GIF
+<p align="center">
+  <img src="Images/Jump.gif"  width="350" >
+</p>
 
 ## Sound
 
@@ -232,13 +261,17 @@ The animation comes with the asset that we imported for the Player. A custom Ani
 
 This UI element shows the amount of power in the player's jump when the jump button is released. To do this, a custom Powerbar class is created, whose values can be updated externally by the PlayerController class to reflect the jumpPower value. The bar moves up and down to give more flexibility to the player.
 
-TODO ADD IMAGE OR GIF OF POWERBAR
+<p align="center">
+  <img src="Images/PowerBar.png"  width="350" >
+</p>
 
 ### Progress Bar
 
 This element shows the player's progress of the level. The same Powerbar used for Jumping is used here as well. This is done by constantly updating the ratio calculated from the tower's highest Y point and the player's current Y position.
 
-TODO ADD IMAGE OF PROGRESS BAR
+<p align="center">
+  <img src="Images/ProgressBar.png"  width="350" >
+</p>
 
 ## Querying and observational method
 
