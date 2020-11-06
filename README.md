@@ -13,8 +13,6 @@ TODO CHANGE CONTENTS STRUCTURE
     - [Storyline](#storyline)
     - [How to play](#how-to-play)
     - [Overall design](#overall-design)
-    - [Cheating mode](#cheating-mode)
-    - [Shader effect](#shader-effect)
     - [Evaluation and report](#evaluation-and-report)
   - [Game Mechanics](#game-mechanics)
     - [Player and Tower](#player-and-tower)
