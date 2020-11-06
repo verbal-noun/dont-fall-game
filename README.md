@@ -97,19 +97,19 @@ There is a power bar indicating the power, so as the height of jumping on the le
 
 ### Overall design
 
-The overall design is a snow scene with a cylinder in the middle representing the mountain, and there are many stones with different shapes on it for the penguin to step on. The difficulty of the game increases with the height, that the higher the penguin gets, the narrower and smaller the stones will be, and more techniques will be required to jump higher. The environment is a snowfield with snow flakes in the air. The background music is cheerful and relaxing with sound effects when the penguin jumps and falls. 
+The overall design is a snow scene with a cylinder in the middle representing the mountain, and there are many stones with different shapes on it for the penguin to step on. The difficulty of the game increases with the height, that the higher the penguin gets, the narrower and smaller the stones will be, and more techniques will be required to jump higher. The environment is a snowfield with snow flakes in the air. The background music is cheerful and relaxing with sound effects when the penguin jumps and falls.
 
 ### Cheating mode
 
-A cheating mode is implemented for the convenience of testing, which the player can press and hold the left shift key, and use the direction keys to move the penguin freely in all directions. 
+A cheating mode is implemented for the convenience of testing, which the player can press and hold the left shift key, and use the direction keys to move the penguin freely in all directions.
 
 ### Shader effect
 
-The skyline shader and snow effect were used to create a more realistic and fantastic environment, and will be further explained in details. 
+The skyline shader and snow effect were used to create a more realistic and fantastic environment, and will be further explained in details.
 
 ### Evaluation and report
 
-Post-task walkthroughs and interview were used as the querying technique and observational method for the evaluation, and improvements have been made. 
+Post-task walkthroughs and interview were used as the querying technique and observational method for the evaluation, and improvements have been made.
 
 ## Game Mechanics
 
@@ -362,8 +362,12 @@ Fifth, the issue with unintuitive button controls have been fixed by adding sign
 
 ## Reference list
 
-- SFX: https://zappsplatt.com
+#### Player
+
 - Penguin: https://assetstore.unity.com/packages/templates/tutorials/dyp-the-penguin-174519
+
+#### Mountain
+
 - Bars: https://assetstore.unity.com/packages/tools/gui/simple-healthbars-132547
 - Bones and Pickaxe: https://assetstore.unity.com/packages/3d/environments/fantasy/stones-and-buried-treasure-95557
 - Picks, shovels, axe: https://assetstore.unity.com/packages/3d/props/tools/tool-starter-kit-63102
@@ -377,6 +381,13 @@ Fifth, the issue with unintuitive button controls have been fixed by adding sign
 - Skeleton: https://overactiongames.itch.io/animated-cartoon-low-poly-skeleton
 - Snowman: https://assetstore.unity.com/packages/3d/props/cute-snowman-12477
 
+#### UI
+
+- Dialog box: https://pngtree.com/
+
+#### Music
+
+- SFX: https://www.zapsplat.com/
 - Main Theme: https://www.youtube.com/watch?v=3o8008aFFUI
 - Audio Manager: https://youtu.be/6OT43pvUyfY
 - Video Playback: https://www.youtube.com/watch?v=p7iXEZGx2Mc
