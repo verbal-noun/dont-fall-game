@@ -6,51 +6,70 @@ TODO CHANGE CONTENTS STRUCTURE
  - [Table of contents](#table-of-contents)
  - [Team Members](#team-members)
  - [General info and explanation](#general-info-and-explanation)
- - [Technologies](#technologies)
- - [Graphics pipeline implementation](#graphics-pipeline-implementation)
+ - [Game mechanisms](#game-mechanisms)
  - [Camera motion](#camera-motion)
- - [Shader implementation](#shader-implementation)
+ - [Custom shader](#custom-shader)
+ - [Graphics pipeline](#graphics-pipeline)
+ - [Particle systems](#particle-systems)
+ - [Sound](#sound)
+ - [Animation](#animation)
+ - [UI](#ui)
  - [Querying and observational method](#querying-and-observational-method)
  - [Changes and improvements according to the evaluation](#changes-and-improvements-according-to-the-evaluation)
  - [Reference list](#reference-list)
+ - [Technologies](#technologies)
 
 ## Team Members
 
 | Name              |           Task           | State |
 | :---------------- | :----------------------: | ----: |
 | Kaif Ahsan        |  |  |
-| Khant Thurein Han | Player Mechanics  | Done |
-| Khant Thurein Han | Animations  | Done |
-| Khant Thurein Han | Sound + AudioManager | Done |
-| Khant Thurein Han | Particle Effects | Done |
-| Khant Thurein Han | Progress bar | Done |
-| Khant Thurein Han | Power bar | Done |
-| Khant Thurein Han | Sign + Dialog | Done |
-| Khant Thurein Han | Shaders | Done |
+| Khant Thurein Han | Player Mechanics         | Done  |
+| Khant Thurein Han | Animations               | Done  |
+| Khant Thurein Han | Sound + AudioManager     | Done  |
+| Khant Thurein Han | Particle Effects         | Done  |
+| Khant Thurein Han | Progress bar             | Done  |
+| Khant Thurein Han | Power bar                | Done  |
+| Khant Thurein Han | Sign + Dialog            | Done  |
+| Khant Thurein Han | Shaders                  | Done  |
 | Hanyong Zhou      |  |  |
-| Zenan Huang       |  |  |
+| Zenan Huang       | Aniamtion                | Done  |
+| Zenan Huang       | Evaluatuation            | Done  |
+| Zenan Huang       | Report                   | Not yet|
 
 ## General info and explanation
 
-TODO BREAK DOWN GENERAL INFO INTO SUBSECTIONS
+Don't Fall is a promising strategy game full of physics and magic. The game is inspired by titles like Jump King and Getting Over It. The game intends to frustrate players by having simple mechanics yet hard level design, where the punishment of making a mistake is extremely severe, causing the player to lose progress and forces the player to redo parts of the level they have previously completed.
 
-This is project 2 of subject COMP30019 in the University of Melbourne. In this project, the storyline and the main purpose is a penguin trying to climb to the top of the mountain and fly like the birds. The game is purposed to give a relaxing and challenging feeling to the players. 
+The player controls the penguin by the jumping and walking mechanics, and the target is to get to the top. It is not as simple as imagined, and full of tricks on the way up. The key is DON'T FALL. 
 
-The game is inspired by titles like Jump King and Getting Over It. The game intends to frustrate players by having simple mechanics yet hard level design, where the punishment of making a mistake is extremely severe, causing the player to lose progress and forces the player to redo parts of the level they have previously completed.
+### Storyline
 
-The overall design is a snow scene with a cylinder in the middle representing the mountain, and there are many stones with different shapes on it for the penguin to step on. The difficulty of the game increases with the height, that the higher the penguin gets, the narrower and smaller the stones will be, and more techniques will be required to jump higher. The background music is cheerful and relaxing with sound effects when the penguin jumps and falls. 
+One day in the snowfield, a penguin was wandering around, and he suddenly saw some birds flying in the sky. He was shocked by how beautiful and free the birds are, and decided to learn how to fly. He was an ambitious bird, and he was so jealous of the birds. He asked one bird to teach him how to fly, and the bird said " You just climb to the top of the mountain. Jump from the top, and flap your wings. Then you can fly". Therefore, the penguin decided to climb to the highest peak of the mountain, to jump off and fly. 
 
-The penguin will implement two mechanisms: jumping and walking. For jumping, the space key should be pressed and held, and the left and right keys should control the direction. The higher the player get, the narrower the stones will be, so that the level of difficulties increases. The player can also walk left or right by pressing left and right keys, to adjust the jumping position. 
+### How to play
+
+The menu includes "Play" button for starting the game, "Option" button for adjusting the volume, and "Quit" button for quitting the game. Once the player pressed "Play", a trailer of the storyline video will be played, and the space key can be used to skip the video. 
+
+A small tutorial will be shown about the play mechanism. The penguin will implement two mechanisms: jumping and walking. For jumping, the space key should be pressed and held, and the left and right keys should control the direction. The higher the player get, the narrower the stones will be, so that the level of difficulties increases. The player can also walk left or right by pressing left and right keys, to adjust the start-jumping position. 
 
 There is a power bar indicating the power, so as the height of jumping on the left bottom corner. The longer the power bar is, the higher the penguin will jump. Also, there is a position bar indicating the height the penguin has climbed, and it changes according to the penguin's position in relation to the cylinder. 
 
+### Overall design
+
+The overall design is a snow scene with a cylinder in the middle representing the mountain, and there are many stones with different shapes on it for the penguin to step on. The difficulty of the game increases with the height, that the higher the penguin gets, the narrower and smaller the stones will be, and more techniques will be required to jump higher. The environment is a snowfield with snow flakes in the air. The background music is cheerful and relaxing with sound effects when the penguin jumps and falls. 
+
+### Cheating mode
+
 A cheating mode is implemented for the convenience of testing, which the player can press and hold the left shift key, and use the direction keys to move the penguin freely in all directions. 
+
+### Shader effect
 
 The skyline shader and snow effect were used to create a more realistic and fantastic environment, and will be further explained in details. 
 
-Post-task walkthroughs and interview were used as the querying technique and observational method for the evaluation, and improvements have been made. 
+### Evaluation and report
 
-Details of the key implementations will be explained below.
+Post-task walkthroughs and interview were used as the querying technique and observational method for the evaluation, and improvements have been made. 
 
 ## Game Mechanics
 
@@ -93,7 +112,6 @@ A typical jump follows a normal parabola which is accurate in real life but feel
 ### Bouncing
 
 The player also has a BounceHorizontal object which makes the players bounce off walls throughtout the game. The usual method of applying a Physics Material does not work in this case as due to the rotational physics we have for the tower. Thus, BounceHorizontal has a Trigger Box Collider, which reverses the tower's angular velocity if the collider comes into contact with a platform.
-
 
 ## Camera motion
 
@@ -223,7 +241,9 @@ TODO ADD IMAGE OF PROGRESS BAR
 
 ## Querying and observational method
 
-Post-task walkthroughs and interview were used as the querying technique and observational methods. 10 participants, aged from 19 to 21, with balanced gender division, who are peers of our group members, were invited to complete our evaluation interview. 
+Post-task walkthroughs and interview were used as the querying technique and observational methods. Considering our game is an intensive game, and involves a lot of focus, it is not likely to interrupt the players as they are playing the game. Also, the process and mechanisms are not too complicated, so the chances of their forgetting their previous actions are small. Rather than questionnaire, we used the interview method, because most of our questions are open, and require their personal ideas and unbounded thoughts. With the face-to-face interview and the voice recording with their consents, more details can be recorded, and we identified some problems or concerns we did not notice by ourselves. 
+
+10 participants, aged from 19 to 21, with balanced gender division, who are peers of our group members, were invited to complete our evaluation interview. 
 
 Participants were asked to watch the trailer at the beginning of the game to get familiar to the storyline, and play the game by themselves. After fifteen minutes if they have not finished the game by themselves, the cheating mode was introduced to them. After they finished the game, eleven questions, regarding to the overall impression and feeling (e.g. Is there anything you want to say right after you played this game? What kind of game do you think it is?), design (How do you like the overall visual/sound effects? Will you associate the actions with the outcome you expect to achieve?), improvements (Where do you think we can improve our game? Is there any bugs that you noticed?), and evaluation (How likely would you recommend this game to your friends, rating from 1 to 10?, How much are you willing to pay for this game if it is in the game store?), were asked, and voice recordings were applied.  
 
