@@ -93,7 +93,7 @@ There is a power bar indicating the power, so as the height of jumping on the le
 | Left arrow | Move Left |
 | Left Shift | Holding Activates cheat mode |
 
-#### Cheat Script
+**Cheat Script**
 
 ### Overall design
 
