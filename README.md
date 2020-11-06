@@ -81,7 +81,7 @@ One day in the snowfield, a penguin was wandering around, and he suddenly saw so
 
 ### How to play
 
-The menu includes "Play" button for starting the game, "Option" button for adjusting the volume, and "Quit" button for quitting the game. Once the player pressed "Play", a trailer of the storyline video will be played, and the space key can be used to skip the video.
+To play the game inside unity, open `StartScene` and press the play button. The menu includes "Play" button for starting the game, "Option" button for adjusting the volume, and "Quit" button for quitting the game. Once the player pressed "Play", a trailer of the storyline video will be played, and the space key can be used to skip the video.
 
 A small tutorial will be shown about the play mechanism. The penguin will implement two mechanisms: jumping and walking. For jumping, the **space key** should be pressed and held, and the **left and right keys** should control the direction. The higher the player get, the narrower the stones will be, so that the level of difficulties increases. The player can also walk left or right by pressing left and right keys, to adjust the start-jumping position.
 
