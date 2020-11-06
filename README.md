@@ -13,8 +13,6 @@ TODO CHANGE CONTENTS STRUCTURE
     - [Storyline](#storyline)
     - [How to play](#how-to-play)
     - [Overall design](#overall-design)
-    - [Cheating mode](#cheating-mode)
-    - [Shader effect](#shader-effect)
     - [Evaluation and report](#evaluation-and-report)
   - [Game Mechanics](#game-mechanics)
     - [Player and Tower](#player-and-tower)
@@ -183,7 +181,7 @@ The maps are:
 The second part also adds an emission color to the snow to create a cartoony blue snow effect.
 
 <p align="center">
-  <img src="Images/Terrain.png"  width="350" >
+  <img src="Assets/Images/Terrain.png"  width="350" >
 </p>
 
 ### Skybox Shader
@@ -216,7 +214,7 @@ fixed4 frag (v2f i) : SV_Target
 }
 ```
 <p align="center">
-  <img src="Images/Skybox.gif"  width="350" >
+  <img src="Assets/Images/Skybox.gif"  width="350" >
 </p>
 
 ## Graphics pipeline
@@ -234,7 +232,7 @@ This particle system simulates snow slowly falling. To do this, we first set the
 Multiple prefab instances of the particle systems are then placed throughout the tower as a child of the tower. This makes the snow rotate together with the tower in local space.
 
 <p align="center">
-  <img src="Images/SnowEffect.gif"  width="350" >
+  <img src="Assets/Images/SnowEffect.gif"  width="350" >
 </p>
 
 ### Jump and Land Effects
@@ -244,7 +242,7 @@ This particle system simulates the movement of snow particles when a player jump
 When a player jumps, a prefab of this particle system is generated at the postion when the player leaves the ground. After a few seconds, this is destroyed. This system is attached as child of tower, so that it rotates according to the tower movement as well.
 
 <p align="center">
-  <img src="Images/Jump.gif"  width="350" >
+  <img src="Assets/Images/Jump.gif"  width="350" >
 </p>
 
 ## Sound
@@ -262,7 +260,7 @@ The animation comes with the asset that we imported for the Player. A custom Ani
 This UI element shows the amount of power in the player's jump when the jump button is released. To do this, a custom Powerbar class is created, whose values can be updated externally by the PlayerController class to reflect the jumpPower value. The bar moves up and down to give more flexibility to the player.
 
 <p align="center">
-  <img src="Images/PowerBar.png"  width="350" >
+  <img src="Assets/Images/PowerBar.png"  width="350" >
 </p>
 
 ### Progress Bar
@@ -270,7 +268,7 @@ This UI element shows the amount of power in the player's jump when the jump but
 This element shows the player's progress of the level. The same Powerbar used for Jumping is used here as well. This is done by constantly updating the ratio calculated from the tower's highest Y point and the player's current Y position.
 
 <p align="center">
-  <img src="Images/ProgressBar.png"  width="350" >
+  <img src="Assets/Images/ProgressBar.png"  width="350" >
 </p>
 
 ## Querying and observational method
