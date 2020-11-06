@@ -272,15 +272,14 @@ Regarding to the feedbacks and suggested improvement from the participants, chan
 
 As mentioned in our summary of the data, a large number of participants felt that the game was too difficult. Upon observing their gameplay, they found difficulties even within the earliest stages of the game. This suggested that we needed an easier start to the game followed by a gradual increase in difficulty, allowing us to ease players into the game.The reason the early stages were difficult was due to the platforms being too narrow, making it easier for players to overshoot and miss. Due to this, we counteracted by widening the platforms with an example shown below.
 
-<p align="center">
-  <img src="Images/beforePlatform.png" width="350" />
-  <img src="Images/afterPlatform.png" width="326"/> 
-</p>
+| Before                                                     |                          After                           |
+| :--------------------------------------------------------- | :------------------------------------------------------: |
+| <img src="Assets/Images/beforePlatform.png" width="350" /> | <img src="Assets/Images/afterPlatform.png" width="326"/> |
 
 Furthermore, the lack of instructions in our evaluation also added to the frustration and difficulty. Due to this, signs were added that hinted to possible tricks and instructions.
 
 <p align="center">
-  <img src="Images/signs.png" width="500" />
+  <img src="Assets/Images/signs.png" width="500" />
 </p>
 
 ### Motivation
@@ -290,13 +289,13 @@ From the suggested improvements, we suspected that the low motivation to play wa
 We improved upon the aesthetics through the addition of props and decorations scattered throughout the map. These props and decorations are also chosen in a way that serves as an indication of progress. What started off with a few friendly snowmen changes to skulls and mysterious crystals as the player climbs. With the help of reduced lighting for ambience, this helps to indicate to the player that they are slowly stepping into more and more dangerous territory with higher stake jumps whilst appealing to people's natural exploratory instincts.
 
 <p align="center">
-  <img src="Images/decorations.png" width="350" />
+  <img src="Assets/Images/decorations.png" width="350" />
 </p>
 
 Furthermore, a progress bar was introduced so that players can see how far away from the goal they were.
 
 <p align="center">
-  <img src="Images/progress.png" width=150" />
+  <img src="Assets/Images/progress.png" width=150" />
 </p>
 
 ### Bug fixes
