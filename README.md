@@ -5,9 +5,7 @@
 </P>
 ## Table of contents
 
-TODO CHANGE CONTENTS STRUCTURE
-
-- [COMP30019 – Graphics and Interaction](#comp30019--graphics-and-interaction)
+- [Don't Fall](#dont-fall---a-3d-platformer)
   - [Table of contents](#table-of-contents)
   - [Team Members](#team-members)
   - [General info and explanation](#general-info-and-explanation)
