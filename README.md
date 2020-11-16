@@ -1,6 +1,4 @@
-**The University of Melbourne**
-
-# COMP30019 – Graphics and Interaction
+# Don't Fall - A 3D Platformer 
 
 <p>
 <img src="Assets/Images/banner.png" width="800">
